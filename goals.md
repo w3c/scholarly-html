@@ -12,3 +12,18 @@ Last modified: Dec 3, 2015.
 1. SH documents should be human-legible and reasonably clear
 1. The SH design should be prepared quickly
 1. Supporting existing formats, authoring tools, and pipelines in producing/processing SH
+2. 
+
+Also the goals in http://scholarly.vernacular.io/ 
+```
+ Our high-level goals were:
+
+    Uncompromisingly enabling structured metadata, accessibility, and internationalisation.
+    Pragmatically working in Web browsers, even if it occasionally incurs some markup overhead.
+    Powerfully customisable for inclusion in arbitrary Web sites, while remaining easy to process and interoperable.
+    Entirely built on top of open, royalty-free standards.
+    Long-term viability as a data format.
+
+Additionally, in view of the specific problem we addressed, in the creation of this vernacular we have favoured the reliability of interchange over ease of authoring; but have nevertheless attempted to cater to the latter as much as possible. 
+ ```
+ 
