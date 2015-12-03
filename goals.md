@@ -12,7 +12,6 @@ Last modified: Dec 3, 2015.
 1. SH documents should be human-legible and reasonably clear
 1. The SH design should be prepared quickly
 1. Supporting existing formats, authoring tools, and pipelines in producing/processing SH
-2. 
 
 Also the goals in http://scholarly.vernacular.io/ 
 ```
