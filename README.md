@@ -1,5 +1,7 @@
 # Scholarly HTML Community Group repository
 
+[![Join the chat at https://gitter.im/w3c/scholarly-html](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/w3c/scholarly-html?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is the repository of the [Scholarly HTML Community Group](https://www.w3.org/community/scholarlyhtml/).
 
 Additional links:
