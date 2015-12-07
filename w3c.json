@@ -1,7 +1,5 @@
 {
-	"contacts":		{ 
-						"github" : "iherman",
-						"w3c"    : "ivan"
-					},
+	"group":		"84855",
+	"contacts":		["iherman","darobin"],
 	"policy" :      "open"
 }
