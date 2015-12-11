@@ -27,3 +27,6 @@ This is a list of existing and/or similar efforts in the community that this CG 
   * See also: https://twitter.com/blahah404/status/660198832974630912
 * Scholarly Markdown
   * Repo/info: http://scholarlymarkdown.com/
+* Paper now (the tool is as much on the publication process than on the format)
+  * Repo/info: https://github.com/PeerJ/paper-now 
+  * Sample document: http://git.macropus.org/allen-insula/ (note that the source view reveals that it relies heavily on Web Components)
