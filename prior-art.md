@@ -30,3 +30,6 @@ This is a list of existing and/or similar efforts in the community that this CG 
 * Paper now (the tool is as much on the publication process than on the format)
   * Repo/info: https://github.com/PeerJ/paper-now 
   * Sample document: http://git.macropus.org/allen-insula/ (note that the source view reveals that it relies heavily on Web Components)
+* EDUPUB Structural Semantics (this profile was defined for Educational publications, but may be a good input to this discussion)
+  * Specification: http://www.idpf.org/epub/profiles/edu/structure/
+ 
