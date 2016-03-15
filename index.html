@@ -411,10 +411,53 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
               <a>schema:faxNumber</a>.
             </li>
           </ul>
+          <p>
+            Here is an example of a complete kitchen sink authors' section. Note that in most cases
+            the markup will be much simpler — this exercises far more of the features than there
+            is information for in a typical case.
+          </p>
+          <figure resource="#authors-example" id="authors-example">
+            <pre><code>
+&lt;section>
+  &lt;h2>Authors&lt;/h2>
+  &lt;ul>
+    &lt;li typeof="sa:ContributorRole" property="schema:author">
+      &lt;span typeof="schema:Person"
+               resource="https://en.wikipedia.org/wiki/John_Henry_Holland">
+        &lt;meta property="schema:givenName" content="John">
+        &lt;meta property="schema:additionalName" content="Henry">
+        &lt;meta property="schema:familyName" content="Holland">
+        &lt;span property="schema:name">John H. Holland&lt;/span>
+      &lt;/span>
+      &lt;a href="#sfi" property="sa:roleAffiliation" resource="http://www.santafe.edu/">a&lt;/a>,
+      &lt;a href="#umich" property="sa:roleAffiliation" resource="http://umich.edu/">b&lt;/a>,
+      &lt;a href="#note1" property="sa:roleAction" resource="#note1">1&lt;/a>
+      &lt;ul>
+        &lt;li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+          &lt;a href="mailto:jholland@umich.edu" property="schema:email">jholland@umich.edu&lt;/a>
+        &lt;/li>
+        &lt;li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+          &lt;a href="fax:+4815162342" property="schema:faxNumber">+4815162342&lt;/a>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/li>
+  &lt;/ul>
+&lt;/section>
+            </code></pre>
+            <figcaption>
+              <span property="schema:name"></span>
+              <span property="schema:description">
+                Example of an author (<code>schema:contributor</code> could also have been used).
+                The links to <code>#sfi</code>, <code>#umich</code>, and <code>#note1</code> are
+                expected to point to items in the <a href="#affiliations">Affiliations</a> section
+                for the first two, and in the <a href="#meta-notes">Notes</a> section for the
+                last one.
+              </span>
+            </figcaption>
+          </figure>
           <!--
             XXX
             needs example with a kitchen sink
-            don't forget to do Person and Organization
           -->
         </section>
         <section id="affiliations">
