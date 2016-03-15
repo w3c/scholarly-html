@@ -425,7 +425,12 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
         </section>
         <section id="abstract-etc">
           <h4>License, Copyright, Keywords, and Abstract</h4>
-          <p>
+          <p>The copyright line of the document can be included in any element, but it must list two properties. <a>schema:copyrightYear</a> has a numeric value, and <a>schema:copyrightHolder</a> has a value of <a>schema:Person</a> or <a>schema:Organization</a>.  </p>
+          <p>A link to the license for the article should be provided. The link should have the property of <a>schema:license</a> and <code>typeof="CreativeWork"</code>. </p>
+          <!-- insert simple license example to CC?-->
+          <p>Keywords should be listed in a <code>section</code> element with an appropriate <code>H2</code>. The list of terms should be a <code>ul</code> with the <code>property</code> of <a>schema:keywords</a> on every <code>li</code>.</p>
+          <p>The abstract should be included in a <code>section</code> element with <code>typeof</code> attribute containing <code>sa:Abstract</code>. 
+            <p class="issue"> should doc-abstract be applied?</p>
 
           </p>
         </section>
