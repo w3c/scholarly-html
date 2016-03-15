@@ -18,6 +18,11 @@ function deref () {
 
 }
 
+// XXX
+function defigure () {
+
+}
+
 // Handle <a>foo:concept</a> where 'foo' is a known ontology that we support.
 // Creates a link and adds the style.
 let ontomap = {
@@ -40,6 +45,7 @@ function deontology () {
 function despec () {
   detoc();
   deref();
+  defigure();
   deontology();
 }
 if (document.readyState === 'complete') despec();
