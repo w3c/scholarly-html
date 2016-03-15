@@ -20,7 +20,23 @@
       <h2>Semantics Overlay</h2>
       <p>
         HTML provides an excellent backbone with which to capture the
-        <a href="#structure">structure</a> of the text
+        <a href="#structure">structure</a> of a given text but is naturally limited when it comes to
+        capturing more domain-specific concepts such as people, spaceships,
+        <a href="http://existentialcomics.com/comic/122">Humean causation</a>, or
+        <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0109888">sthenurines</a>.
+        That is where semantic overlays with the ability to refine the meaning and relations of
+        HTML elements come into play, more specifically <a role="doc-biblioref">RDFa</a>.
+      </p>
+      <p>
+        The properties that Scholarly HTML captures are naturally document-related (authorship,
+        keywords, license, citations, as well as specific structure types such as acknowledgements,
+        introduction, or funding), which additionally requires the ability to describe people and
+        organizations. There are numerous vocabularies that address this domain; however, for
+        reasons detailed in
+        <a href="https://research.science.ai/article/web-first-data-citations#choice-of-ontology">Web-First
+        Data Citations</a> Scholarly HTML relies almost exclusively on
+        <a role="doc-biblioref">schema.org</a>, complemented by a small number of additions from
+        the <a href="#scholarly-article">Scholarly Article Vocabulary</a>.
       </p>
       <!--
         - mostly schema.org
@@ -41,6 +57,9 @@
         - disclosures
         - syntactic constraints (prefix)
       -->
+      <section id="scholarly-article">
+        <h3>Scholarly Article Vocabulary</h3>
+      </section>
     </section>
   </body>
 </html>
