@@ -14,3 +14,9 @@ a.onto {
   text-decoration-color: #fc0;
   color: #434343;
 }
+
+/* special boxes */
+p.issue {
+  border-left: 3px solid red;
+  padding: 0.5em 1em;
+}

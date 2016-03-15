@@ -138,7 +138,78 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
       </p>
       <section id="person-org">
         <h3>Persons &amp; Organizations</h3>
-        <!-- XXX explain how these get expressed -->
+        <p>
+          Marking up persons and organizations can make use of any applicable properties in
+          <a>schema:Person</a> and <a>schema:Organization</a>, respectively, but it is worth
+          pointing out some good practices with how these are to be used in practice.
+        </p>
+        <p>
+          If the entity in question has a URL then it is best to use that as its identifier (using
+          the <code>resource</code> attribute) and additionally to provide it as a link using the
+          <code>a</code> element (see the <a href="#person-example">person example</a> for an
+          instance of this).
+        </p>
+        <p>
+          If you happen to have information providing both the
+          <a>schema:givenName</a>/<a>schema:familyName</a><a>schema:additionalName</a> triple and
+          the <a>schema:name</a> (which can be considered to contain the name as the person wishes
+          it to be displayed) for a person then it is (perhaps counterintuitively) best to
+          include <em>all</em> of them and then use CSS (typically sibling selectors) to hide the
+          extraneous ones (alternatively, they can be captured using the <code>meta</code> element).
+          The reason for this is that it exposes more information to machine consumers without
+          having a negative impact on human readers.
+        </p>
+        <figure resource="#person-example" id="person-example">
+          <pre><code>
+&lt;span typeof="schema:Person" resource="http://orcid.org/0000-0003-1279-3709">
+  &lt;meta property="schema:givenName" content="Bruce">
+  &lt;meta property="schema:familyName" content="Banner">
+  &lt;a href="http://orcid.org/0000-0003-1279-3709">
+    &lt;span property="schema:name">Dr. Bruce Banner&lt;/span>
+  &lt;/a>
+&lt;/span>
+          </code></pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of a Person. This demonstrates the use of extraneous name information using
+              <code>meta</code> elements. The container is a <code>span</code> but it could be any
+              other container element. This also shows how <a>schema:name</a> can be used for the
+              person's preferred display name, as distinct from the more specific structured name
+              information.
+            </span>
+          </figcaption>
+        </figure>
+        <p>
+          Here is also an organization:
+        </p>
+        <figure resource="#org-example" id="org-example">
+          <pre><code>
+&lt;span typeof="schema:Organization" resource="https://www.w3.org/">
+  &lt;a href="https://www.w3.org/">
+    &lt;span property="schema:name">W3C&lt;/span>
+  &lt;/a>
+  (&lt;span property="schema:location" typeof="schema:Place">
+    &lt;span property="schema:address" typeof="schema:PostalAddress">
+      &lt;span property="schema:addressLocality">Cambridge&lt;/span>,
+      &lt;span property="schema:addressRegion">MA&lt;/span>,
+      &lt;span property="schema:addressCountry">USA&lt;/span>
+    &lt;/span>
+  &lt;/span>)
+&lt;/span>
+          </code></pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of an Organization. This also features the organization's address.
+            </span>
+          </figcaption>
+        </figure>
+        <p class="issue">
+          How should we represent name transliterations? Are there language tags for transliterated
+          text? Or should ruby+rdf:HTML be suggested instead? If the latter we can no longer use
+          <code>meta</code> (which is acceptable).
+        </p>
       </section>
       <section id="roles">
         <h3>Roles</h3>
@@ -188,7 +259,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           To demonstrate how properties can attach differently to the role and to the agent, we can
           unfold the authorship example further:
         </p>
-        <figure resource="#role-example">
+        <figure resource="#role-example" id="role-example">
           <pre>
 <a>schema:ScholarlyArticle</a>
 └─<a>schema:author</a>
@@ -248,7 +319,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">the WebSchemas Accessibility
           wiki page</a>).
         </p>
-        <figure resource="#article-example">
+        <figure resource="#article-example" id="article-example">
           <pre><code>
 &lt;article <strong>resource="#" typeof="schema:ScholarlyArticle"</strong>>
   &lt;header>
@@ -307,7 +378,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
               role) and <code>typeof</code> either <a>schema:Person</a> (if the author is a sentient
               entity) or <a>schema:Organization</a> (if it is a collective thereof). How to capture
               persons and organizations is detailed in the creatively-named
-              <a href="#person-org">Person &amp; Organizations</a> section.
+              <a href="#person-org">Persons &amp; Organizations</a> section.
             </li>
             <li>
               Zero or more <code>a</code> elements with a <code>property</code> of
@@ -414,11 +485,18 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
       </section>
       <!--
         XXX
-        - dedication?
+        - dedication? see doc-dedication
         - syntactic constraints (prefix)
       -->
       <section id="scholarly-article">
         <h3>Scholarly Article Vocabulary</h3>
+      </section>
+      <section id="processing-model">
+        <h3>Processing Model</h3>
+        <!--
+          - basically explain what a processor ignores and what its internal model looks like
+          - the processing extracts (almost) pure HTML, it then uses the RDFa to enrich that
+        -->
       </section>
     </section>
   </body>
