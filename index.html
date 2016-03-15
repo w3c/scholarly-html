@@ -129,7 +129,39 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
       </p>
       <section id="person-org">
         <h3>Persons &amp; Organizations</h3>
-        <!-- XXX explain how these get expressed -->
+        <p>
+          Marking up persons and organizations can make use of any applicable properties in
+          <a>schema:Person</a> and <a>schema:Organization</a>, respectively, but it is worth
+          pointing out some good practices with how these are to be used in practice.
+        </p>
+        <p>
+          If the entity in question has a URL then it is best to use that as its identifier (using
+          the <code>resource</code> attribute) and additionally to provide it as a link using the
+          <code>a</code> element (see the <a href="#person-example">person example</a> for an
+          instance of this).
+        </p>
+        <p>
+          If you happen to have information providing both the
+          <a>schema:givenName</a>/<a>schema:familyName</a><a>schema:additionalName</a> triple and
+          the <a>schema:name</a> (which can be considered to contain the name as the person wishes
+          it to be displayed) for a person then it is (perhaps counterintuitively) best to
+          include <em>all</em> of them and then use CSS (typically sibling selectors) to hide the
+          extraneous ones (alternatively, they can be captured using the <code>meta</code> element).
+          The reason for this is that it exposes more information to machine consumers without
+          having a negative impact on human readers.
+        </p>
+        <!--
+        XXX example
+        <span property="schema:author" typeof="schema:Person" resource="http://berjon.com/">
+          <a href="http://berjon.com/">
+            <span property="schema:name">Robin Berjon</span>
+          </a>
+        </span>
+        -->
+        <p class="issue">
+          How should we represent name transliterations? Are there language tags for transliterated
+          text? Or should ruby+rdf:HTML be suggested instead?
+        </p>
       </section>
       <section id="roles">
         <h3>Roles</h3>
@@ -298,7 +330,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
               role) and <code>typeof</code> either <a>schema:Person</a> (if the author is a sentient
               entity) or <a>schema:Organization</a> (if it is a collective thereof). How to capture
               persons and organizations is detailed in the creatively-named
-              <a href="#person-org">Person &amp; Organizations</a> section.
+              <a href="#person-org">Persons &amp; Organizations</a> section.
             </li>
             <li>
               Zero or more <code>a</code> elements with a <code>property</code> of
