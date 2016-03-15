@@ -11,23 +11,21 @@
     <header>
       <h1>Scholarly HTML</h1>
     </header>
-<<<<<<< HEAD
-    <h2>Abstract</h2>
     <section>
-||||||| merged common ancestors
+      <h2>Abstract</h2>
+      <p>
+
+      </p>
     <section>
-=======
     <div role="contentinfo">
 
     </div>
     <section id="introduction">
->>>>>>> 1c59c5e3a22eb840c41a01ffa27f5b925b68cc30
       <h2>Introduction</h2>
       <p>
     </section>
     <section id="structure">
       <h2>Structure</h2>
-<<<<<<< HEAD
       <p>A Scholarly HTML document is a valid HTML document that follows some additional rules to specialise its meaning and make it predictable to processors wishing to produce or consume scholarly articles. These rules are outlined in the following sections. While valuable on its own, the content structure defined here is simply a stepping stone to enable semantic enrichment, detailed in LINKTOCOME.  </p>
       <h3>The <code>Root</code> and <code>Head</code></h3>
       <!--<p>All Scholarly HTML documents must be valid HTML. Scholarly HTML provides and additional set of restrictions and extensions that aid both human and machine processing.</p> -->
@@ -36,7 +34,7 @@
       <p>The <code>head</code> must contain <code>&lt;meta charset="utf-8"&gt;</code> element and a <code>title</code> element.</p>
       <h3>The <code>Article</code></h3>
       <p>The first child of <code>&lt;article&gt;</code> must be <code>&lt;header&gt;</code>. The header should contain an <code>&lt;H1&gt;</code> with the title of the document. The following element must be a <code>&lt;div&gt;</code> with the role of <code>"contentinfo"</code> containing author and affilitation information.</p> <!--add links to sem section-->
-      <p><code>Section</code> elements may be listed within the article at arbitrary depths, but each <code>section</code> must begin with an <code>hx</code> element, indicating a numbered section in the article. If the sections require headings that exceed <code>h6</code>, <code>aria-level</code> must be included to indicate depth.</p>   
+      <p><code>Section</code> elements may be listed within the article at arbitrary depths, but each <code>section</code> must begin with an <code>hx</code> element, indicating a numbered section in the article. If the sections require headings that exceed <code>h6</code>, <code>aria-level</code> must be included to indicate depth.</p>
 <p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
 <h3>Hunk Elements</h3> <!--all of these defnitions can just be links to 5.1-->
 <p>Hunk elements are the meaningful blocks from which sections are built. They contain text and inline elements. There are several types of hunk elements.</p>
@@ -89,21 +87,14 @@ If <code>figure</code> is a code container, it must contain a <code>pre</code> e
    </ul>
 
    <h3>References</h3>
-   <p>The References section requires specific semantic overlays (reference) as well as strict content structure. Apart from a (required) <code>hx</code> element, it must contain only one <code>ol</code> or <code>dl</code> element.</p> 
+   <p>The References section requires specific semantic overlays (reference) as well as strict content structure. Apart from a (required) <code>hx</code> element, it must contain only one <code>ol</code> or <code>dl</code> element.</p>
    <p>If using a <code>dl</code> element, the contents must be alternating <code>dt</code> and <code>dd</code> elements. The <code>dd</code> must contain the citation.</p>
    <p>If using <code>ol</code>, the only contents are <code>li</code> that include citations.</p> <!--add references to sem as well as CSS to rearrange order based on citation format -->
 
    <h3>Validation</h3>
    <p>The only validation requirement for Scholarly HTML at this point is that the HTML is valid. We are considering building a a validation tool in RelaxNG or JavaScript to check compliance with this set of rules.
-    
-    <section>
-||||||| merged common ancestors
-    </section>
-    <section>
-=======
-    </section>
+
     <section id="semantics">
->>>>>>> 1c59c5e3a22eb840c41a01ffa27f5b925b68cc30
       <h2>Semantics Overlay</h2>
       <p>
         HTML provides an excellent backbone with which to capture the
