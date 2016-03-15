@@ -29,13 +29,13 @@
       <p>A Scholarly HTML document is a valid <a role="doc-biblioref">HTML</a> document that follows some additional rules to specialize its meaning and make it predictable to processors wishing to produce or consume scholarly articles. These rules are outlined in the following sections. While valuable on its own, the content structure defined here is simply a stepping stone to enable semantic enrichment, detailed in <a href="#semantics">Semantics Overlays</a>. If you would like to write a validation tool, please join us on GitHub. </p>
 
       <h3>The <code>Root</code> and <code>Head</code></h3>
-      <p>The document must be encoded in UTF-8 and transmitted with a media type of <code>text/html</code>.  
+      <p>The document must be encoded in UTF-8 and transmitted with a media type of <code>text/html</code>.
       <p>The <code>head</code> must contain <code>&lt;meta charset="utf-8"&gt;</code> element and a <code>title</code> element.</p>
       <h3>The <code>Article</code></h3>
       <p>The first child of <code>article</code> must be <code>header</code>. The header should contain an <code>&lt;H1&gt;</code> with the title of the document. The following element must be a <code>&lt;div&gt;</code> with the role of <code>"contentinfo"</code> containing author and affilitation information. See <a href="#contentinfo-semantics">The <code>contentinfo</code> Region Semantics</a> for information about the semantic decoration of this element.</p>
       <p><code>Section</code> elements may be listed within the article at arbitrary depths, but each <code>section</code> must begin with an <code>hx</code> element, indicating a numbered section in the article. If the sections require headings that exceed <code>h6</code>, <code>aria-level</code> must be included to indicate depth.</p>
 <p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
-<h3>Hunk Elements</h3> 
+<h3>Hunk Elements</h3>
 <p>Hunk elements are the meaningful blocks from which sections are built. They contain text and inline elements. There are several types of hunk elements.</p>
 <p>The most common hunk element is <a href="https://www.w3.org/TR/html51/semantics.html#the-p-element"><code>p</code></a>.
 <p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-blockquote-element"><code>blockquote</code></a>, <a href="https://www.w3.org/TR/html51/semantics.html#the-ul-element"><code>ul</code></a>, <a href ="https://www.w3.org/TR/html51/semantics.html#the-ol-element"<code>ol</code></a>, and <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"><code>dl</code></a> elements can be used as they typically would and require no special treatment.</p>
@@ -46,11 +46,11 @@
 
 <p>If <code>figure</code> is <code>typeof="sa:image"</code>, it is an image container. It must contain an <code>img</code> child element and should contain a <code>figcaption</code> labeling that image.</p>
 
-If <code>figure</code> is a <code>typeof="sa:table"</code>table, it is a table container. It must contain a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>. Table notes may also be included as <code>ol<code> with a <code>li</code> elements with the role of <code>doc-footnote</code>.
+If <code>figure</code> is a <code>typeof="sa:table"</code>table, it is a table container. It must contain a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>. Table notes may also be included as <code>ol</code> with a <code>li</code> elements with the role of <code>doc-footnote</code>.
 
 If <code>figure</code> is a <code>typeof="sa:formula"</code>, it is a formula container. It must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browser the math element must contain an annotation descendant with the TeX equivalent of the formula.
 
-If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it is a code container. It must contain a <code>pre</code> element and, optionally, a <code>figcaption</code>. The <code>pre</code> element must contain a <code>code</code> element as its only child. 
+If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it is a code container. It must contain a <code>pre</code> element and, optionally, a <code>figcaption</code>. The <code>pre</code> element must contain a <code>code</code> element as its only child.
 
 
 <h3>Inline Elements</h3>
@@ -78,7 +78,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
         </ul>
         </li>
          </ul>
-         </p> 
+         </p>
 
 
 
