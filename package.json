@@ -2,7 +2,20 @@
   "name": "scholarly-html",
   "private": true,
   "license": "MIT",
-  "dependencies": {
-    "normalize.css": "3.0.3"
+  "scripts": {
+    "build-css": "postcss --config ./cssnow.json css/scholarly.css",
+    "watch-css": "postcss --watch --config ./cssnow.json css/scholarly.css",
+    "watch": "npm run watch-css"
+  },
+  "devDependencies": {
+    "normalize.css": "3.0.3",
+    "cssnano": "3.5.2",
+    "postcss": "5.0.19",
+    "postcss-browser-reporter": "0.4.0",
+    "postcss-cli": "2.5.1",
+    "postcss-cssnext": "2.5.1",
+    "postcss-import": "8.0.2",
+    "postcss-reporter": "1.3.3",
+    "postcss-url": "5.1.1"
   }
 }
