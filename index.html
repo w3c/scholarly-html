@@ -128,8 +128,17 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
         <a role="doc-biblioref">schema.org</a>, complemented by a small number of additions from
         the <a href="#scholarly-article">Scholarly Article Vocabulary</a>.
       </p>
+      <section id="person-org">
+        <h3>Persons &amp; Organizations</h3>
+        <!-- XXX explain how these get expressed -->
+      </section>
       <section id="roles">
         <h3>Roles</h3>
+        <!--
+          XXX needs rewrite, Dave doesn't understand, ergo no one will
+          DC suggests contrasting two examples: one in which I am eternally indentured to the
+          Illuminati, versus one in which I am just a hired gun.
+        -->
         <p>
           It is worth taking a step back to understand the importance of the <em>role</em>
           modeling. Its application is clearly exemplified in the <a href="#authors">Authors &amp;
@@ -178,7 +187,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
   └─<a>sa:ContributorRole</a>
     ├─<a>schema:author</a>
     │ └─<a>schema:Person</a>
-    │   ├─<a>schema:name</a> = Robin Berjon
+    │   ├─<a>schema:name</a> = Bruce Banner
     │   └─<a>schema:url</a> = http://berjon.com/
     └─<a>sa:roleAffiliation</a>
       └─<a>schema:Organization</a>
@@ -188,7 +197,9 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           <figcaption>
             <span property="schema:name"></span>
             <span property="schema:description">
-              Example of a role being used to model authorship.
+              Example of a role being used to model authorship. This effectively states that my
+              affiliation <em>as a contributor</em> is to the Illuminati and that my name
+              <em>as a person</em> is Bruce Banner.
             </span>
           </figcaption>
         </figure>
@@ -275,8 +286,57 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           <p>
             Each <code>li</code> in that list must feature a <code>typeof</code> of
             <a>sa:ContributorRole</a> and a property of either <a>schema:author</a> or
-            <a>schema:contributor</a> depending on which is applicable.
+            <a>schema:contributor</a> depending on which is applicable. Modeling with schema.org
+            roles is explained in the <a href="#roles">Roles</a> section.
           </p>
+          <p>
+            The <a>sa:ContributorRole</a> <code>span</code> is structured as follows:
+          </p>
+          <ul>
+            <li>
+              Exactly one <code>span</code> with a <code>property</code> of either
+              <a>schema:author</a> or <a>schema:contributor</a> (matching the one that points to the
+              role) and <code>typeof</code> either <a>schema:Person</a> (if the author is a sentient
+              entity) or <a>schema:Organization</a> (if it is a collective thereof). How to capture
+              persons and organizations is detailed in the creatively-named
+              <a href="#person-org">Person &amp; Organizations</a> section.
+            </li>
+            <li>
+              Zero or more <code>a</code> elements with a <code>property</code> of
+              <a>sa:roleAffiliation</a>, one for each affiliation of the author in producing the
+              article. Each of those elements needs further to have a <code>resource</code>
+              attribute matching the one on the affiliation it is pointing to and an
+              <code>href</code> attribute linking to the element on which that affiliation is
+              defined. The <code>a</code> element may contain arbitrary text (typically a number,
+              letter, or symbol matching that used by the target in its own list). These should not
+              occur if the agent is an organization.
+            </li>
+            <li>
+              Zero or more <code>a</code> elements with a <code>property</code> of
+              <a>sa:roleAction</a>, one for each comment describing the author's specific
+              contribution to the work (e.g. "Authors contributed equally" or "Designed the study").
+              Each of those elements needs further to have a <code>resource</code>
+              attribute matching the one on the note it is pointing to and an
+              <code>href</code> attribute linking to the element which contains that note. The
+              <code>a</code> element may contain arbitrary text (typically a number, letter, or
+              symbol matching that used by the target in its own list).
+            </li>
+            <li>
+              Zero or one <code>ul</code> elements. Each of its <code>li</code> children has a
+              <code>property</code> of <a>schema:roleContactPoint</a> and a <code>typeof</code> set
+              to <a>schema:ContactPoint</a>. The content of each <code>li</code> can be anything
+              that describes a manner of contacting the author in question, but it will typically
+              involve properties such as <a>schema:email</a>, <a>schema:telephone</a>,
+              <a>schema:address</a>, <a>schema:description</a> (for arbitrary descriptions of the
+              contact method), or for journals publishing to the Web of the early 1980s
+              <a>schema:faxNumber</a>.
+            </li>
+          </ul>
+          <!--
+            XXX
+            needs example with a kitchen sink
+            don't forget to do Person and Organization
+          -->
         </section>
         <section id="affiliations">
           <h4>Affiliations</h4>
@@ -295,6 +355,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           <p>
 
           </p>
+          <!-- these are rdf:HTML? probably not -->
         </section>
       </section>
       <section id="flavored-links">
