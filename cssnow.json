@@ -1,0 +1,16 @@
+{
+  "use": [
+    "postcss-import",
+    "postcss-url",
+    "postcss-cssnext",
+    "cssnano",
+    "postcss-browser-reporter",
+    "postcss-reporter"
+  ],
+  "output": "css/scholarly.min.css",
+  "no-map": true,
+  "postcss-cssnext": {
+    "browsers": "last 2 versions",
+    "verbose":  true
+  }
+}

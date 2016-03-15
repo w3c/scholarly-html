@@ -4,18 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Scholarly HTML</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
   </head>
-  <body>
+  <body prefix="schema: http://schema.org">
     <header>
       <h1>Scholarly HTML</h1>
     </header>
+<<<<<<< HEAD
     <h2>Abstract</h2>
     <section>
+||||||| merged common ancestors
+    <section>
+=======
+    <div role="contentinfo">
+
+    </div>
+    <section id="introduction">
+>>>>>>> 1c59c5e3a22eb840c41a01ffa27f5b925b68cc30
       <h2>Introduction</h2>
       <p>
     </section>
-    <section>
+    <section id="structure">
       <h2>Structure</h2>
+<<<<<<< HEAD
       <p>A Scholarly HTML document is a valid HTML document that follows some additional rules to specialise its meaning and make it predictable to processors wishing to produce or consume scholarly articles. These rules are outlined in the following sections. While valuable on its own, the content structure defined here is simply a stepping stone to enable semantic enrichment, detailed in LINKTOCOME.  </p>
       <h3>The <code>Root</code> and <code>Head</code></h3>
       <!--<p>All Scholarly HTML documents must be valid HTML. Scholarly HTML provides and additional set of restrictions and extensions that aid both human and machine processing.</p> -->
@@ -85,7 +97,182 @@ If <code>figure</code> is a code container, it must contain a <code>pre</code> e
    <p>The only validation requirement for Scholarly HTML at this point is that the HTML is valid. We are considering building a a validation tool in RelaxNG or JavaScript to check compliance with this set of rules.
     
     <section>
+||||||| merged common ancestors
+    </section>
+    <section>
+=======
+    </section>
+    <section id="semantics">
+>>>>>>> 1c59c5e3a22eb840c41a01ffa27f5b925b68cc30
       <h2>Semantics Overlay</h2>
+      <p>
+        HTML provides an excellent backbone with which to capture the
+        <a href="#structure">structure</a> of a given text but is evidently limited when it comes to
+        capturing more domain-specific concepts such as people, spaceships,
+        <a href="http://existentialcomics.com/comic/122">Humean causation</a>, or
+        <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0109888">sthenurines</a>.
+        That is where semantic overlays with the ability to refine the meaning and relations of
+        HTML elements come into play. Scholarly HTML makes use of two standard mechanisms that
+        overlay additional semantics atop the HTML DOM: role-based semantics as defined by
+        <a role="doc-biblioref">WAI-ARIA</a> and <a role="doc-biblioref">DPUB-ARIA</a>, and
+        semantics rooted in structured data as captured by <a role="doc-biblioref">RDFa</a>.
+      </p>
+      <p>
+        Using technologies related to the semantic web can at times feel daunting and unrelated to
+        everyday web development. In order to suppress this disconnect, Scholarly HTML follows a
+        few simple guiding principles:
+      </p>
+      <ul>
+        <li>
+          The number of prefixes used for semantic properties is kept as small as possible;
+        </li>
+        <li>
+          There is no such thing as a URI (or URN, IRI, XRI, or whatever else confusing
+          contraption), everything is a URL.
+        </li>
+      </ul>
+      <p>
+        The properties that Scholarly HTML uses are naturally document-related (authorship,
+        keywords, license, citations, as well as specific structure types such as acknowledgements,
+        introduction, or funding), which additionally requires the ability to describe people and
+        organizations. There are numerous vocabularies that address this domain and which could be
+        used with <a role="doc-biblioref">RDFa</a>; however, for reasons detailed in
+        <a href="https://research.science.ai/article/web-first-data-citations#choice-of-ontology">Web-First
+        Data Citations</a> Scholarly HTML relies almost exclusively on
+        <a role="doc-biblioref">schema.org</a>, complemented by a small number of additions from
+        the <a href="#scholarly-article">Scholarly Article Vocabulary</a>.
+      </p>
+      <section id="article-title-semantics">
+        <h3>Article and Title Semantics</h3>
+        <p>
+          The <code>article</code> element that roots the content of the Scholarly HTML document
+          needs further refinement to capture the specific type of article that it encodes. The
+          <code>typeof</code> attribute should always contain <a>schema:ScholarlyArticle</a> as its
+          first item, but it can be further refined with additional article types.
+        </p>
+        <p class="issue">
+          Should we recommend a specific taxonomy for article (sub)typing? There are so many:
+          Fabio, MeSH, NPG…
+        </p>
+        <p>
+          In order for arbitrary parts of the document to be able to attach metadata to the
+          <code>article</code>, it also needs to have its <code>resource</code> attribute set to a
+          URL that can be referenced (it is typically sufficient to just use <code>#</code> for that
+          purpose).
+        </p>
+        <p>
+          While the <code>h1</code> in the document's <code>header</code> is sufficient to convey
+          the fact that it is the document's title, some services use extraneous information in
+          order to assign an unambiguous title to the document. As such, it needs to have its
+          <code>property</code> attribute set to <a>schema:name</a>. Similary, if a subtitle is
+          present in the <code>header</code> it needs to be decorated with both a <code>role</code>
+          of <code>doc-subtitle</code> (to expose its <a role="doc-biblioref">DPUB-ARIA</a>
+          semantics) and a <code>property</code> of <a>schema:alternateName</a>.
+        </p>
+        <p>
+          If appropriate, the beginning of the <code>article</code> is also a good place in which to
+          capture the accessibility properties of the document, using the relevant parts of
+          <a role="doc-biblioref">schema.org</a> (<a>schema:accessibilityFeature</a>,
+          <a>schema:accessibilityHazard</a>, <a>schema:accessibilityAPI</a>, and
+          <a>schema:accessibilityControl</a>, as detailed in
+          <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">the WebSchemas Accessibility
+          wiki page</a>).
+        </p>
+        <figure resource="#article-example">
+          <pre><code>
+&lt;article <strong>resource="#" typeof="schema:ScholarlyArticle"</strong>>
+  &lt;header>
+    &lt;h1 <strong>property="schema:name"</strong>>Is Cryptopaleozoology Hopeless?&lt;/h1>
+    &lt;p <strong>role="doc-subtitle" property="schema:alternateName"</strong>>
+      The Future of the Scientific Method
+    &lt;/p>
+  &lt;/header>
+  <strong>&lt;meta property="schema:accessibilityFeature" content="alternativeText">
+  &lt;meta property="schema:accessibilityFeature" content="MathML">
+  &lt;meta property="schema:accessibilityHazard" content="noFlashingHazard"></strong>
+&lt;/article>
+          </code></pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of <code>article</code> and title markup.
+            </span>
+          </figcaption>
+        </figure>
+        <!--
+          example
+          accessibility features
+        -->
+      </section>
+      <section id="contentinfo-semantics">
+        <h3>The <code>contentinfo</code> Region Semantics</h3>
+        <p>
+          As described in the <a href="#structure">Structure section</a>, the <code>contentinfo</code>
+          region serves as a container for the metadata of the article
+        </p>
+        <section id="authors">
+          <h4>Authors &amp; Contributors</h4>
+          <p>
+
+          </p>
+        </section>
+        <section id="affiliations">
+          <h4>Affiliations</h4>
+          <p>
+
+          </p>
+        </section>
+        <section id="abstract-etc">
+          <h4>License, Copyright, Keywords, and Abstract</h4>
+          <p>
+
+          </p>
+        </section>
+      </section>
+      <section id="flavored-links">
+        <h3>Flavored Links</h3>
+        <p>
+
+        </p>
+      </section>
+      <section id="citations">
+        <h3>Citations</h3>
+        <p>
+
+        </p>
+      </section>
+      <section id="typing-sections">
+        <h3>Typing Sections</h3>
+        <p>
+
+        </p>
+        <section id="funding">
+          <h3>Funding Information</h3>
+          <p>
+
+          </p>
+        </section>
+        <section id="disclosures">
+          <h3>Disclosures</h3>
+          <p>
+
+          </p>
+        </section>
+        <section id="acknowledgements">
+          <h3>Acknowledgements</h3>
+          <p>
+
+          </p>
+        </section>
+      </section>
+      <!--
+        XXX
+        - dedication?
+        - syntactic constraints (prefix)
+      -->
+      <section id="scholarly-article">
+        <h3>Scholarly Article Vocabulary</h3>
+      </section>
     </section>
   </body>
 </html>
