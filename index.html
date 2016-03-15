@@ -150,17 +150,56 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           The reason for this is that it exposes more information to machine consumers without
           having a negative impact on human readers.
         </p>
-        <!--
-        XXX example
-        <span property="schema:author" typeof="schema:Person" resource="http://berjon.com/">
-          <a href="http://berjon.com/">
-            <span property="schema:name">Robin Berjon</span>
-          </a>
-        </span>
-        -->
+        <figure resource="#person-example" id="person-example">
+          <pre><code>
+&lt;span typeof="schema:Person" resource="http://orcid.org/0000-0003-1279-3709">
+  &lt;meta property="schema:givenName" content="Bruce">
+  &lt;meta property="schema:familyName" content="Banner">
+  &lt;a href="http://orcid.org/0000-0003-1279-3709">
+    &lt;span property="schema:name">Dr. Bruce Banner&lt;/span>
+  &lt;/a>
+&lt;/span>
+          </code></pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of a Person. This demonstrates the use of extraneous name information using
+              <code>meta</code> elements. The container is a <code>span</code> but it could be any
+              other container element. This also shows how <a>schema:name</a> can be used for the
+              person's preferred display name, as distinct from the more specific structured name
+              information.
+            </span>
+          </figcaption>
+        </figure>
+        <p>
+          Here is also an organization:
+        </p>
+        <figure resource="#org-example" id="org-example">
+          <pre><code>
+&lt;span typeof="schema:Organization" resource="https://www.w3.org/">
+  &lt;a href="https://www.w3.org/">
+    &lt;span property="schema:name">W3C&lt;/span>
+  &lt;/a>
+  (&lt;span property="schema:location" typeof="schema:Place">
+    &lt;span property="schema:address" typeof="schema:PostalAddress">
+      &lt;span property="schema:addressLocality">Cambridge&lt;/span>,
+      &lt;span property="schema:addressRegion">MA&lt;/span>,
+      &lt;span property="schema:addressCountry">USA&lt;/span>
+    &lt;/span>
+  &lt;/span>)
+&lt;/span>
+          </code></pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of an Organization. This also features the organization's address.
+            </span>
+          </figcaption>
+        </figure>
         <p class="issue">
           How should we represent name transliterations? Are there language tags for transliterated
-          text? Or should ruby+rdf:HTML be suggested instead?
+          text? Or should ruby+rdf:HTML be suggested instead? If the latter we can no longer use
+          <code>meta</code> (which is acceptable).
         </p>
       </section>
       <section id="roles">
@@ -211,7 +250,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           To demonstrate how properties can attach differently to the role and to the agent, we can
           unfold the authorship example further:
         </p>
-        <figure resource="#role-example">
+        <figure resource="#role-example" id="role-example">
           <pre>
 <a>schema:ScholarlyArticle</a>
 └─<a>schema:author</a>
@@ -271,7 +310,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">the WebSchemas Accessibility
           wiki page</a>).
         </p>
-        <figure resource="#article-example">
+        <figure resource="#article-example" id="article-example">
           <pre><code>
 &lt;article <strong>resource="#" typeof="schema:ScholarlyArticle"</strong>>
   &lt;header>
@@ -433,11 +472,18 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
       </section>
       <!--
         XXX
-        - dedication?
+        - dedication? see doc-dedication
         - syntactic constraints (prefix)
       -->
       <section id="scholarly-article">
         <h3>Scholarly Article Vocabulary</h3>
+      </section>
+      <section id="processing-model">
+        <h3>Processing Model</h3>
+        <!--
+          - basically explain what a processor ignores and what its internal model looks like
+          - the processing extracts (almost) pure HTML, it then uses the RDFa to enrich that
+        -->
       </section>
     </section>
   </body>
