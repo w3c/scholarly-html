@@ -1,2 +1,7 @@
 
 @import "normalize.css/normalize.css";
+
+body {
+  max-width: 21cm;
+  margin: auto;
+}
