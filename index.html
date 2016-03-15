@@ -112,7 +112,12 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
         </li>
         <li>
           There is no such thing as a URI (or URN, IRI, XRI, or whatever else confusing
-          contraption), everything is a URL.
+          contraption), everything is a URL;
+        </li>
+        <li>
+          Where somewhat more complex modeling is required, it is put together using a small set of
+          common patterns that might require some initial learning but can be applied regularly
+          with relative ease (notably <a href="#roles">roles</a> and actions).
         </li>
       </ul>
       <p>
@@ -126,6 +131,71 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
         <a role="doc-biblioref">schema.org</a>, complemented by a small number of additions from
         the <a href="#scholarly-article">Scholarly Article Vocabulary</a>.
       </p>
+      <section id="roles">
+        <h3>Roles</h3>
+        <p>
+          It is worth taking a step back to understand the importance of the <em>role</em>
+          modeling. Its application is clearly exemplified in the <a href="#authors">Authors &amp;
+          Contributors</a> section wherein a <a>sa:ContributorRole</a> type is used as a wrapper
+          and not <a>schema:Person</a> or <a>schema:Organization</a> directly.
+        </p>
+        <p>
+          Roles are an indirection that provides additional information about a property or
+          relationship. A simple overview is provided in the schema.org blog post
+          <a href="http://blog.schema.org/2014/06/introducing-role.html">Introducing 'Role'</a>.
+        </p>
+        <p>
+          Let's look at the example of authorship information. Some properties of the agent who
+          authored the document (person or organization), such as their name, are considered to be
+          true outside the limited context of the document. These properties will be set directly on
+          the agent.
+        </p>
+        <p>
+          On the other hand, other properties are considered to be specific to the agent
+          <em>in their role as author of the document</em>. To give an example, were I to be
+          writing the document you are currently reading as a freelancer for the Illuminati, my
+          affiliation to them would be solely in my role as author and I should not be considered
+          eternally indentured to them.
+        </p>
+        <p>
+          When a role is used to enrich a property, the convention is to have it as the value of
+          that property, and then to repeat the property on the role to point to the object. At
+          first glance it sounds contrived, but it is a simple and powerful construct. To stay with
+          the authoring example, the indirection would look like:
+        </p>
+        <p>
+          <a>schema:ScholarlyArticle</a> ⟼
+          <em><a>schema:author</a></em> ⟼
+          <a>sa:ContributorRole</a> ⟼
+          <em><a>schema:author</a></em> ⟼
+          <a>schema:Person</a>
+        </p>
+        <p>
+          To demonstrate how properties can attach differently to the role and to the agent, we can
+          unfold the authorship example further:
+        </p>
+        <figure resource="#role-example">
+          <pre>
+<a>schema:ScholarlyArticle</a>
+└─<a>schema:author</a>
+  └─<a>sa:ContributorRole</a>
+    ├─<a>schema:author</a>
+    │ └─<a>schema:Person</a>
+    │   ├─<a>schema:name</a> = Robin Berjon
+    │   └─<a>schema:url</a> = http://berjon.com/
+    └─<a>sa:roleAffiliation</a>
+      └─<a>schema:Organization</a>
+        ├─<a>schema:name</a> = Illuminati
+        └─<a>schema:address</a> = Bavaria
+          </pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of a role being used to model authorship.
+            </span>
+          </figcaption>
+        </figure>
+      </section>
       <section id="article-title-semantics">
         <h3>Article and Title Semantics</h3>
         <p>
@@ -183,21 +253,32 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
             </span>
           </figcaption>
         </figure>
-        <!--
-          example
-          accessibility features
-        -->
       </section>
       <section id="contentinfo-semantics">
         <h3>The <code>contentinfo</code> Region Semantics</h3>
         <p>
           As described in the <a href="#structure">Structure section</a>, the <code>contentinfo</code>
-          region serves as a container for the metadata of the article
+          region serves as a container for the metadata of the article. It is itself nothing more
+          than a <code>div</code> with a <code>role</code> of <code>contentinfo</code>, but its
+          content has rich structure.
+        </p>
+        <p>
+          It contains a list of <code>section</code> elements, each of which is identified with a
+          specific <code>typeof</code> attribute.
         </p>
         <section id="authors">
           <h4>Authors &amp; Contributors</h4>
           <p>
-
+            If the document has authors or contributors, they are listed in a <code>section</code>
+            with <code>typeof</code> <a>sa:ArticleList</a>. The content of that <code>section</code>
+            is an <code>h2</code> title appropriate for it, followed by either a <code>ul</code> or
+            <code>ol</code> (depending on whether the authors are considered ordered, which is
+            highly dependent on the discipline's culture).
+          </p>
+          <p>
+            Each <code>li</code> in that list must feature a <code>typeof</code> of
+            <a>sa:ContributorRole</a> and a property of either <a>schema:author</a> or
+            <a>schema:contributor</a> depending on which is applicable.
           </p>
         </section>
         <section id="affiliations">
@@ -212,6 +293,12 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
 
           </p>
         </section>
+        <section id="meta-notes">
+          <h4>Notes</h4>
+          <p>
+
+          </p>
+        </section>
       </section>
       <section id="flavored-links">
         <h3>Flavored Links</h3>
@@ -221,6 +308,12 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
       </section>
       <section id="citations">
         <h3>Citations</h3>
+        <p>
+
+        </p>
+      </section>
+      <section id="footnotes">
+        <h3>Footnotes &amp; Endnotes</h3>
         <p>
 
         </p>
