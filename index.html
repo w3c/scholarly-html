@@ -9,12 +9,81 @@
     <header>
       <h1>Scholarly HTML</h1>
     </header>
+    <h2>Abstract</h2>
     <section>
       <h2>Introduction</h2>
+      <p>
     </section>
     <section>
       <h2>Structure</h2>
-    </section>
+      <p>A Scholarly HTML document is a valid HTML document that follows some additional rules to specialise its meaning and make it predictable to processors wishing to produce or consume scholarly articles. These rules are outlined in the following sections. While valuable on its own, the content structure defined here is simply a stepping stone to enable semantic enrichment, detailed in LINKTOCOME.  </p>
+      <h3>The <code>Root</code> and <code>Head</code></h3>
+      <!--<p>All Scholarly HTML documents must be valid HTML. Scholarly HTML provides and additional set of restrictions and extensions that aid both human and machine processing.</p> -->
+      <p>The document must be encoded in UTF-8 and transmitted with a media type of <code>text/html</code>. It must feature a <code>DOCTYPE</code> as its preamble.</p> <!-- do we need to state doctype. Can we just say that the file needs to be valid? -->
+      <p>The html root element must include a valid <code>lang</code> attribute.</p>
+      <p>The <code>head</code> must contain <code>&lt;meta charset="utf-8"&gt;</code> element and a <code>title</code> element.</p>
+      <h3>The <code>Article</code></h3>
+      <p>The first child of <code>&lt;article&gt;</code> must be <code>&lt;header&gt;</code>. The header should contain an <code>&lt;H1&gt;</code> with the title of the document. The following element must be a <code>&lt;div&gt;</code> with the role of <code>"contentinfo"</code> containing author and affilitation information.</p> <!--add links to sem section-->
+      <p><code>Section</code> elements may be listed within the article at arbitrary depths, but each <code>section</code> must begin with an <code>hx</code> element, indicating a numbered section in the article. If the sections require headings that exceed <code>h6</code>, <code>aria-level</code> must be included to indicate depth.</p>   
+<p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
+<h3>Hunk Elements</h3> <!--all of these defnitions can just be links to 5.1-->
+<p>Hunk elements are the meaningful blocks from which sections are built. They contain text and inline elements. There are several types of hunk elements.</p>
+<p>The most common hunk element is <code>p</code>, which is used to capture paragraphs or sentence-like structures.</p> <!--are we resticting use of p? Does this say anything that is not in HTML spec?-->
+<p>The <code>blockquote</code>, <code>ul</code>, <code>ol</code>, and <code>dl</code> elements can be used as they typically would and require no special treatment.</p>
+
+<p>The <code>aside</code> hunk element is used to capture portions of content that stand apart from the main flow of content. These can be separated from the article without having impact on the reader's understanding of the article. A common use is text boxes in print. If the <code>aside</code> contains an <code>hX</code> heading element, that heading must be the first element child and its numeric part must reflect its depth, making use of aria-level according to the same rules as apply for section. The other children of aside must all be hunk elements. For example, if an <code>aside</code> follows a <code>section</code> with a level 3 heading, the top-level heading in the <code>aside</code> should be <code>h4</code>.</p>
+
+
+<p>The <code>figure</code> element is a general container for self-contained content units that are embedded inside the main body of the text. It can come in several flavors that are dictated by its typeof attribute. Common uses for <code>figure</code> are as a container for images, tables, equations, and computer code.</p> <!--explain how this differs from aside without going into a11y details--><!-- add link to sem -->
+
+<p>If <code>figure</code> is an image container, it must contain an <code>img</code> child element and should contain a <code>figcaption</code> labeling that image.</p>
+
+If <code>figure</code> is a table container, it must contain nothing other than a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>.
+
+If <code>figure</code> is a formula container, it must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browser the math element must contain an annotation descendant with the TeX equivalent of the formula. <!-- anything alse? maybe a textual desc?-->
+
+If <code>figure</code> is a code container, it must contain a <code>pre</code> element and, optionally, a <code>figcaption</code>. The <code>pre</code> element must contain as its only child a <code>code</code> element. <!--a code element or 1+ code elements -->
+
+<h3>Inline Elements</h3>
+<p>Inline elements decorate, describe, and enrich text. Inside of hunk elements, heading elements, and captioning elements the following inline elements can be used (and where applicable they can nest within one another):</p>
+<ul>
+  <li><code>a</code></li>
+<li><code>abbr</code></li>
+<li><code>bdi</code></li>
+<li><code>bdo</code></li>
+<li><code>cite</code></li>
+<li><code>code</code></li>
+<li><code>data</code></li>
+<li><code>del</code></li>
+<li><code>dfn</code></li>
+<li><code>em</code></li>
+<li><code>img (for small, contextual images that should not be figures)</code></li>
+<li><code>ins</code></li>
+<li><code>kbd</code></li>
+<li><code>mark</code></li>
+<li><code>math (for inline equations that should not be figures; they must also contain a TeX annotation)</code></li>
+<li><code>meter</code></li>
+<li><code>q</code></li>
+<li><code>ruby (with embedded rb, rt, rtc, and rp)</code></li>
+<li><code>samp</code></li>
+<li><code>span</code></li>
+<li><code>strong</code></li>
+<li><code>sub</code></li>
+<li><code>sup</code></li>
+<li><code>svg (for small, contextual images that should not be figures)</code></li>
+<li><code>time</code></li>
+<li><code>var</code></li>
+<li><code>wbr</code></li>
+   </ul>
+
+   <h3>References</h3>
+   <p>The References section requires specific semantic overlays (reference) as well as strict content structure. Apart from a (required) <code>hx</code> element, it must contain only one <code>ol</code> or <code>dl</code> element.</p> 
+   <p>If using a <code>dl</code> element, the contents must be alternating <code>dt</code> and <code>dd</code> elements. The <code>dd</code> must contain the citation.</p>
+   <p>If using <code>ol</code>, the only contents are <code>li</code> that include citations.</p> <!--add references to sem as well as CSS to rearrange order based on citation format -->
+
+   <h3>Validation</h3>
+   <p>The only validation requirement for Scholarly HTML at this point is that the HTML is valid. We are considering building a a validation tool in RelaxNG or JavaScript to check compliance with this set of rules.
+    
     <section>
       <h2>Semantics Overlay</h2>
     </section>
