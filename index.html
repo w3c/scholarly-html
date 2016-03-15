@@ -357,7 +357,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
           <h4>Authors &amp; Contributors</h4>
           <p>
             If the document has authors or contributors, they are listed in a <code>section</code>
-            with <code>typeof</code> <a>sa:ArticleList</a>. The content of that <code>section</code>
+            with <code>typeof</code> <a>sa:AuthorsList</a>. The content of that <code>section</code>
             is an <code>h2</code> title appropriate for it, followed by either a <code>ul</code> or
             <code>ol</code> (depending on whether the authors are considered ordered, which is
             highly dependent on the discipline's culture).
@@ -411,17 +411,112 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
               <a>schema:faxNumber</a>.
             </li>
           </ul>
-          <!--
-            XXX
-            needs example with a kitchen sink
-            don't forget to do Person and Organization
-          -->
+          <p>
+            Here is an example of a complete kitchen sink authors' section. Note that in most cases
+            the markup will be much simpler — this exercises far more of the features than there
+            is information for in a typical case.
+          </p>
+          <figure resource="#authors-example" id="authors-example">
+            <pre><code>
+&lt;section typeof="sa:AuthorsList">
+  &lt;h2>Authors&lt;/h2>
+  &lt;ul>
+    &lt;li typeof="sa:ContributorRole" property="schema:author">
+      &lt;span typeof="schema:Person"
+            resource="https://en.wikipedia.org/wiki/John_Henry_Holland">
+        &lt;meta property="schema:givenName" content="John">
+        &lt;meta property="schema:additionalName" content="Henry">
+        &lt;meta property="schema:familyName" content="Holland">
+        &lt;span property="schema:name">John H. Holland&lt;/span>
+      &lt;/span>
+      &lt;a href="#sf" property="sa:roleAffiliation" resource="http://www.santafe.edu/">a&lt;/a>,
+      &lt;a href="#umich" property="sa:roleAffiliation" resource="http://umich.edu/">b&lt;/a>,
+      &lt;a href="#note1" property="sa:roleAction" resource="#note1">1&lt;/a>
+      &lt;ul>
+        &lt;li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+          &lt;a href="mailto:jholland@umich.edu"
+             property="schema:email">jholland@umich.edu&lt;/a>
+        &lt;/li>
+        &lt;li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+          &lt;a href="fax:+4815162342" property="schema:faxNumber">+4815162342&lt;/a>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/li>
+  &lt;/ul>
+&lt;/section>
+            </code></pre>
+            <figcaption>
+              <span property="schema:name"></span>
+              <span property="schema:description">
+                Example of an author (<code>schema:contributor</code> could also have been used).
+                The links to <code>#sf</code>, <code>#umich</code>, and <code>#note1</code> are
+                expected to point to items in the <a href="#affiliations">Affiliations</a> section
+                for the first two, and in the <a href="#meta-notes">Notes</a> section for the
+                last one.
+              </span>
+            </figcaption>
+          </figure>
         </section>
         <section id="affiliations">
           <h4>Affiliations</h4>
           <p>
-
+            If the authors and contributors of the documents are affiliated with organizations, they
+            are listed in a <code>section</code> with <code>typeof</code> <a>sa:Affiliations</a>.
+            The content of that <code>section</code> is an <code>h2</code> title appropriate for it,
+            followed by a <code>ul</code> or <code>ol</code> (but the order is less commonly
+            relevant than it is for authors).
           </p>
+          <p>
+            Note that articles that feature an organization as an author should have that
+            organization listed in the <a href="#authors">Authors &amp; Contributors</a> section,
+            and <em>not</em> here.
+          </p>
+          <p>
+            Each <code>li</code> in the list is one affiliation (though multiple people can
+            reference it). The <code>li</code> needs to have an <code>id</code> matching that used
+            in the reference. Inside the <code>li</code> is a <code>span</code> with
+            <code>typeof</code> set to <a>schema:Organization</a> and its <code>resource</code>
+            also matching the one used in the reference. (The belt and suspenders approach is
+            unfortunately needed to produce both usable HTML and a viable data model.)
+          </p>
+          <p>
+            The content of the <a>schema:Organization</a> can contain any applicable property. An
+            example of an affiliations section, with some extra structure for the organization is
+            given below.
+          </p>
+          <figure resource="#affiliations-example" id="affiliations-example">
+            <pre><code>
+&lt;section typeof="sa:Affiliations">
+  &lt;h2>Affiliations&lt;/h2>
+  &lt;ul>
+    &lt;li id="sa">
+      &lt;span typeof="schema:Organization" resource="https://science.ai/">
+        &lt;span property="schema:name">science.ai&lt;/span>,
+        &lt;span property="schema:parentOrganization">
+          &lt;span typeof="schema:Organization">
+            &lt;span property="schema:name">Standard Analytics&lt;/span>
+            —
+            &lt;span property="schema:location" typeof="schema:Place">
+              &lt;span property="schema:address" typeof="schema:PostalAddress">
+                &lt;span property="schema:addressLocality">NYC&lt;/span>,
+                &lt;span property="schema:addressRegion">NY&lt;/span>,
+                &lt;span property="schema:addressCountry">USA&lt;/span>
+              &lt;/span>
+            &lt;/span>
+          &lt;/span>
+        &lt;/span>
+      &lt;/span>
+    &lt;/li>
+  &lt;/ul>
+&lt;/section>
+            </code></pre>
+            <figcaption>
+              <span property="schema:name"></span>
+              <span property="schema:description">
+                Example of an organization section.
+              </span>
+            </figcaption>
+          </figure>
         </section>
         <section id="abstract-etc">
           <h4>License, Copyright, Keywords, and Abstract</h4>
@@ -441,7 +536,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
             is an <code>h2</code> title appropriate for it, followed by either a <code>ul</code> or
             <code>ol</code>. Each <code>li</code> should be labeled with the role of <code>doc-endnote</code>. Note that this role is used for endnotes and footnotes alike.</p>
             <!-- a word about note references? doc-noteref or rel?-->
-          
+
           </p>
           <!-- these are rdf:HTML? probably not -->
         </section>
