@@ -18,9 +18,29 @@ function deref () {
 
 }
 
+// Handle <a>foo:concept</a> where 'foo' is a known ontology that we support.
+// Creates a link and adds the style.
+let ontomap = {
+  schema: 'http://schema.org/',
+  sa:     '#',
+};
+function deontology () {
+  Array.from(document.querySelectorAll('a:not([href])'))
+    .forEach($a => {
+      let parts = $a.textContent.split(':');
+      if (parts.length !== 2) return;
+      let base = ontomap[parts[0]];
+      if (!base) return;
+      $a.setAttribute('href', `${base}${parts[1]}`);
+      $a.setAttribute('class', 'onto');
+    })
+  ;
+}
+
 function despec () {
   detoc();
   deref();
+  deontology();
 }
 if (document.readyState === 'complete') despec();
 else document.addEventListener('DOMContentLoaded', despec, false);

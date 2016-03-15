@@ -6,3 +6,11 @@ body {
   margin: auto;
   line-height: 1.6;
 }
+
+/* link types */
+a.onto {
+  font-family: monospace;
+  text-decoration: underline;
+  text-decoration-color: #fc0;
+  color: #434343;
+}
