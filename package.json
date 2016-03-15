@@ -1,0 +1,8 @@
+{
+  "name": "scholarly-html",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "normalize.css": "3.0.3"
+  }
+}
