@@ -687,7 +687,7 @@ time can say nothing but I told you so.
           <p class="issue">There are many values for rel, such as glossary and bibliography that look like they are useful, but based on the definition, it sounds like they point to the section containing the whole biblio. Not so helpful. rel="citation" or "biblioentry" would be more valuable.</p>
       </section>
       <section id="citations">
-        <h3>Citations</h3>
+        <h3>Citations &amps; References</h3>
         <p>
           Citations in scholarly articles provide a way to reference the work of others upon which
           one builds. In the pre-Web era, they essentially served as links by carrying sufficient
@@ -729,17 +729,19 @@ time can say nothing but I told you so.
     resource="http://semver.org/"
     property="schema:citation" id="some-id">
  &lt;cite property="schema:name">
-   &lt;a href="http://semver.org/">Semantic Versioning 2.0.0</a>
+   &lt;a href="http://semver.org/">Semantic Versioning 2.0.0&lt;/a>
  &lt;/cite>,
-  by&lt;span property="schema:author" typeof="schema:Person">
-   &lt;span property="schema:givenName">Tom</span>
-   &lt;span property="schema:familyName">Preston-Werner</span>
+  by &lt;span property="schema:author" typeof="schema:Person">
+   &lt;span property="schema:givenName">Tom&lt;/span>
+   &lt;span property="schema:familyName">Preston-Werner&lt;/span>
  &lt;/span>; published in
- &lt;time property="schema:datePublished" datatype="xsd:gYear" datetime="2014">2014</time>
+ &lt;time property="schema:datePublished" datatype="xsd:gYear"
+       datetime="2014">2014&lt;/time>
  &lt;span property="schema:potentialAction" typeof="schema:ReadAction">
    &lt;meta property="schema:actionStatus" content="CompletedActionStatus">
     (accessed on
-   &lt;time property="schema:endTime" datatype="xsd:date" datetime="2016-02-01">01 Feb 2016</time>)
+   &lt;time property="schema:endTime" datatype="xsd:date"
+         datetime="2016-02-01">01 Feb 2016&lt;/time>)
  &lt;/span>.
 &lt;/li>
           </code></pre>
@@ -772,13 +774,43 @@ time can say nothing but I told you so.
           </figcaption>
         </figure>
         <p>
-
+          The references section is simply a <code>section</code> with an appropriate heading,
+          containing an <code>ol</code>. Each <code>li</code> in the list follows a regular
+          structure: it has a <code>role</code> of <code>doc-biblioentry</code>, a
+          <code>resource</code> being the URL identifying the cited object, a <code>property</code>
+          of <a>schema:citation</a>, and <code>id</code> to make it linkable, and a
+          <code>typeof</code> capturing the kind of object that is being referenced (typically
+          <a>schema:ScholarlyArticle</a>, <a>schema:Book</a>, or <a>schema:WebPage</a> but there is
+          really no limit as to what may be cited).
         </p>
-        <!--
-          XXX explain that in order to reproduce the vagaries of print citations, what matters is
-          the data. One approach would be to extract the schema.org information, convert it to CSL
-          variables (link), and use a CSL implementation to produce the output
-        -->
+        <p>
+          The content of the <code>li</code> can be any <a role="doc-biblioref">RDFa</a> that
+          matches the <code>typeof</code>, but some good practices should be observed.
+        </p>
+        <p>
+          The title or name of the cited object should be in a <code>cite</code> element. If a link
+          is available, then the title should be linked. Date and time values (such as publication
+          or access date) should make use of the <code>time</code> element (further noting that
+          the <code>datatype</code> attribute can be used to express the granularity of the date as
+          in the example above).
+        </p>
+        <p>
+          While arbitrary metadata may be used, it is highly recommended to stick to
+          <a role="doc-biblioref">schema.org</a> and the
+          <a href="#scholarly-article">Scholarly Article</a> vocabularies. The reason for that is
+          that, should one wish to convert from Scholarly HTML citations into a specific print
+          format then it will be desirable to be able to reliably extract information from the
+          citations. This could be used for instance to produce <a role="doc-biblioref">CSL</a>
+          variables (as <a href="http://citationstyles.org/developers/">exemplified in the CSL
+          documentation</a>) and then use a CSL implementation in order to produce the output.
+        </p>
+        <p class="issue">
+          Should we be more constraining and define more precisely the constructs that are more
+          likely to interoperate?
+        </p>
+        <p class="issue">
+          Providing a mapping to CSL would be extremely useful.
+        </p>
       </section>
       <section id="footnotes">
         <h3>Footnotes &amp; Endnotes</h3>
