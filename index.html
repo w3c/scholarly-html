@@ -41,7 +41,7 @@
       <h3>The <code>Article</code></h3>
       <p>The first child of <code>article</code> must be <code>header</code>. The header should contain an <code>H1</code> with the title of the document. The following element must be a <code>div</code> with the role of <code>"contentinfo"</code> containing author and affilitation information. See <a href="#contentinfo-semantics">The <code>contentinfo</code> Region Semantics</a> for information about the semantic decoration of this element.</p>
       <p><code>Section</code> elements may be listed within the article at arbitrary depths, but each <code>section</code> must begin with an <code>hx</code> element, indicating a numbered section in the article. If the sections require headings that exceed <code>h6</code>, <code>aria-level</code> must be included to indicate depth.</p>
-  
+
     <figure id="arialevelexample" typeof="schema:SoftwareSourceCode" role="doc-example">
         <pre>
         <code>
@@ -52,10 +52,10 @@
         </pre>
     <figcaption>Example of a level 7 heading, using aria-level</figcaption>
     </figure>
-    
+
 <p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
 </section>
-        
+
 <section id="hunk">
 <h3>Hunk Elements</h3>
 <p>Hunk elements are the meaningful blocks from which sections are built. They contain text and <a href="#inline">inline elements</a>.   There are several types of hunk elements. All content, ranging from long paragraphs to note references and footnotes can be captured using this specified set of elements. The method for distinguishing one from another in a machine-readable manner is specified in <a href="#semantics">Semantics Overlay.</a></p>
@@ -127,7 +127,6 @@ time can say nothing but I told you so.
    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-introduction">doc-introduction</a> on the <code>section</code> introducing the article, if relevant</li>
    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-subtitle">doc-subtitle</a> to indicate that a portion of a heading is a secondary or alrternate title of the work.</li>
 </ul>
-    
     <p class="issue">Should we require ARIA's table, grid, rowheader, and rowgroup?</p>
     <p class="issue">I did not include doc-biblioentry, doc-biblioref, doc-credit bc of extensive citation markup in JSON-LD</p>
     <p class="issue">doc-endnote, doc-endnotes are not in the current published draft of DPUB-ARIA. See <a href="http://rawgit.com/w3c/aria/master/aria/dpub.html">March DPUB-ARIA draft</a> </p>
@@ -339,6 +338,82 @@ time can say nothing but I told you so.
               Example of a role being used to model authorship. This effectively states that my
               affiliation <em>as a contributor</em> is to the Illuminati and that my name
               <em>as a person</em> is Bruce Banner.
+            </span>
+          </figcaption>
+        </figure>
+      </section>
+      <section id="actions">
+        <h3>Actions</h3>
+        <p>
+          Actions are a global <a role="doc-biblioref">schema.org</a> mechanism to convey facts
+          about things that can be or have been <em>done</em>. There is an
+          <a href="http://schema.org/docs/actions.html">overview document for actions</a> but it
+          dives deep very fast and may be more confusing than helpful. This sections intends to
+          convey all that one needs to know about actions in order to understand their usage in
+          Scholarly HTML (keeping in mind that they can do much more).
+        </p>
+        <p>
+          Note that actions can do much more than what Scholarly HTML uses them for. For instance,
+          if you use an email client that supports actions (such as GMail) you may have noticed that
+          some emails allow for direct interactions: those are implemented using actions, and
+          without scripting.
+        </p>
+        <p>
+          Actions have a type (e.g. <code>ReadAction</code>, <code>DrinkAction</code>), a status
+          (completed, in progress…), an agent being whoever carries it out, and an object which is
+          what they are being done to. They can also have start and end times (as well as several
+          other properties which we won't go into here). Scholarly articles typically feature
+          indications about things that people have done, which is a good fit for modeling with
+          actions. A few examples should help clarify the notion.
+        </p>
+        <p>
+          When referencing an online work, it is customary to indicate the access date for it (since
+          it may have changed in the meantime). This can be modeled as a <a>schema:ReadAction</a>,
+          with its <a>schema:actionStatus</a> set to <code>CompletedActionStatus</code>, and a
+          <a>schema:endTime</a> being the access date. In JSON-LD it would look like this:
+        </p>
+        <figure resource="#read-action-example" id="read-action-example">
+          <pre><code>
+{
+  "@type":        "ReadAction",
+  "actionStatus": "CompletedActionStatus",
+  "endTime":      "1977-03-15"
+}
+          </code></pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of a <a>schema:ReadAction</a> used to model the access date of an online
+              citation. Both the object and the agent are implicit in the context in which it is
+              used.
+            </span>
+          </figcaption>
+        </figure>
+        <p>
+          Authors often acknowledge the contributions of others or have to disclose potential
+          conflicts of interest that may stem from their interactions outside of the article.
+          The former can be conveyed as an <a>sa:AcknowledgeAction</a> in which the
+          <a>schema:name</a> of the action is the verb part of the acknowledgement and the
+          <a>schema:recipient</a> is the person (or entity of any kind) being acknowledged. The
+          agent is typically implicitly specified as the object to which the action is attached.
+        </p>
+        <figure resource="#read-action-example" id="read-action-example">
+          <pre><code>
+{
+  "@type": "AcknowledgeAction",
+  "actionStatus": "CompletedActionStatus",
+  "name": "is thankful for the pioneering contribution of",
+  "recipient": {
+    "@type": "Person",
+    "name": "Vannevar Bush",
+  }
+}
+            </code></pre>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of an <a>sa:AcknowledgeAction</a> in which the author (not shown) acknowledges
+              contributions from Vannevar Bush.
             </span>
           </figcaption>
         </figure>
@@ -671,6 +746,7 @@ time can say nothing but I told you so.
         - link to bugs
         - link to group
         - needs more sthenurines
+        - proper punctuation
       -->
     </section>
   </body>
