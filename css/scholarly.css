@@ -69,6 +69,18 @@ p.issue {
   padding: 0.5em 1em;
 }
 
+@media screen and (max-width: 577px) {
+  div.status {
+    width: auto;
+  }
+}
+@media screen and (max-width: 980px) {
+  body {
+    margin: 0 2em;
+  }
+}
+
+
 /*
   XXX
   section titles
