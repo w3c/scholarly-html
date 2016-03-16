@@ -53,7 +53,7 @@
     <figcaption>Example of a level 7 heading, using aria-level</figcaption>
     </figure>
     
-<p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
+<p>Each section may contain zero or more <a href="#hunk">Hunk Elements</a> and <code>section</code> elements.</p>
 </section>
         
 <section id="hunk">
@@ -61,23 +61,27 @@
 <p>Hunk elements are the meaningful blocks from which sections are built. They contain text and <a href="#inline">inline elements</a>.   There are several types of hunk elements. All content, ranging from long paragraphs to note references and footnotes can be captured using this specified set of elements. The method for distinguishing one from another in a machine-readable manner is specified in <a href="#semantics">Semantics Overlay.</a></p>
 <p>The most common hunk element is <a href="https://www.w3.org/TR/html51/semantics.html#the-p-element"><code>p</code></a>.
 <p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-blockquote-element"><code>blockquote</code></a>, <a href="https://www.w3.org/TR/html51/semantics.html#the-ul-element"><code>ul</code></a>, <a href ="https://www.w3.org/TR/html51/semantics.html#the-ol-element"<code>ol</code></a>, and <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"><code>dl</code></a> elements can be used as they typically would and require no special treatment.</p>
-<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"<code>aside</code></a> hunk element is used to capture portions of content that stand apart from the main flow of content. These can be separated from the article without having impact on the reader's understanding of the article. A common use is text boxes in print. If the <code>aside</code> contains an <code>header</code> heading element, that heading must be the first element child and its numeric part must reflect its depth, making use of aria-level according to the same rules as apply for section. The other children of aside must all be hunk elements. For example, if an <code>aside</code> follows a <code>section</code> with a level 3 heading, the top-level heading in the <code>aside</code> should be <code>h4</code>.</p>
+        
+<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"<code>aside</code></a> hunk element is used to capture portions of content that stand apart from the main flow of content. These can be separated from the article without having impact on the reader's understanding of the article. A common use is text boxes in print. If the <code>aside</code> contains an <code>header</code> heading element, that heading must be the first element child and its numeric part must reflect its depth, making use of <code>aria-level</code> according to the same rules that apply for <code>section</code>. The other children of asid<code>aside</code>e must all be hunk elements. For example, if an <code>aside</code> follows a <code>section</code> with a level 3 heading, the top-level heading in the <code>aside</code> should be <code>h4</code>.</p>
 
-<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-figure-element"><code>figure</code></a> element is a general container for self-contained content units that are embedded inside the main body of the text. It can come in several flavors that are dictated by its typeof attribute. Common uses for <code>figure</code> are as a container for images, tables, equations, and computer code.</p> <!-- add link to sem -->
+<section id="figures">
+    <h4>Figures</h4>
+<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-figure-element"><code>figure</code></a> element is a general container for self-contained content units that are embedded inside the main body of the text. It can come in several flavors that are dictated by its <code>typeof</code> attribute. Common uses for <code>figure</code> are as a container for images, tables, equations, and computer code.</p> 
 
 <p>If <code>figure</code> is <code>typeof="sa:image"</code>, it is an image container. It must contain an <code>img</code> child element and should contain a <code>figcaption</code> labeling that image.</p>
 
-<p>If <code>figure</code> is a <code>typeof="sa:table"</code>table, it is a table container. It must contain a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>. Table notes may also be included as <code>ol</code> with a <code>li</code> elements with the role of <code>doc-footnote</code>.</p>
+<p>If <code>figure</code> is a <code>typeof="sa:table"</code>table, it is a table container. It must contain a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>. Table notes may also be included as <code>ol</code> with <code>li</code> elements with the role of <code>doc-footnote</code>.</p>
 
-<p>If <code>figure</code> is a <code>typeof="sa:formula"</code>, it is a formula container. It must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browser the math element must contain an annotation descendant with the TeX equivalent of the formula.</p>
+<p>If <code>figure</code> is a <code>typeof="sa:formula"</code>, it is a formula container. It must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browsers the math element must contain an annotation descendant with the TeX equivalent of the formula.</p>
 
 <p>If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it is a code container. It must contain a <code>pre</code> element and, optionally, a <code>figcaption</code>. The <code>pre</code> element must contain a <code>code</code> element as its only child.</p>
+</section>
 </section>
 
 <section id="inline">
 <h3>Inline Elements</h3>
-<p><a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline elements</a> decorate, describe, and enrich text. Inside of hunk elements, heading elements, and captioning elements and inline elements can be used (and where applicable they can nest within one another). Inline images and inline math can be inlcuded as well. This can be accomplished using <code>img</code> for images or <code>math</code> equations. Equations can be displayed inline or as blocks within a paragaph. </p>
-<figure resource="#mathblock-example" id="mathblock-example">
+<p><a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline elements</a> decorate, describe, and enrich text. Inline elements can be usied inside of hunk elements, heading elements, and captioning elements. Where applicable, they can nest within one another. Inline images and inline math can be inlcuded as well. This can be accomplished using <code>img</code> for images or <code>math</code> for formulas. Equations can be displayed inline or as blocks within a paragaph. </p>
+<figure resource="#mathblock-example" id="mathblock-example" typeof="sa:formula" role="doc-example">
           <pre><code>
 &lt;p>
 If we should weep when clowns put on their show, if we should stumble when musicians play,
@@ -94,7 +98,7 @@ time can say nothing but I told you so.
 </section>
 <section id="references">
    <h3>References</h3>
-   <p>The References section requires specific semantic overlays (reference) as well as strict content structure. Apart from a (required) <code>hx</code> element, it must contain only one <code>ol</code> or <code>dl</code> element.</p>
+   <p>The References section requires specific <a href="#citations">semantic overlays</a> (reference) as well as strict content structure. Apart from a (required) <code>hx</code> element, it must contain only one <code>ol</code> or <code>dl</code> element.</p>
    <p>If using a <code>dl</code> element, the contents must be alternating <code>dt</code> and <code>dd</code> elements. The <code>dd</code> must contain the citation.</p>
    <p>If using <code>ol</code>, the only contents are <code>li</code> that include citations.</p> <!--add references to sem as well as CSS to rearrange order based on citation format -->
 </section>
@@ -123,9 +127,9 @@ time can say nothing but I told you so.
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-dedication">doc-endnotes</a> on the <code>section</code> containing a group of notes</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-errata">doc-errata</a> on a ???</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-example">doc-example</a> on a hunk element containing an illustrative concept, such as a code sample.</li>
-    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-footnote">doc-footnote</a> on a hunk element containing an individual note, such as information about the author.</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-footnote">doc-footnote</a> on a hunk element containing an individual note, such as an informative note about the author or table footnote</li>
    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-introduction">doc-introduction</a> on the <code>section</code> introducing the article, if relevant</li>
-   <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-subtitle">doc-subtitle</a> to indicate that a portion of a heading is a secondary or alrternate title of the work.</li>
+   <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-subtitle">doc-subtitle</a> to indicate that a portion of a heading is a secondary or alternate title of the work</li>
 </ul>
     
     <p class="issue">Should we require ARIA's table, grid, rowheader, and rowgroup?</p>
@@ -597,9 +601,12 @@ time can say nothing but I told you so.
       </section>
       <section id="flavored-links">
         <h3>Flavored Links</h3>
-        <p>
-
+        <p>The <a href="https://www.w3.org/TR/html51/semantics.html#linkTypes"><code>rel</code></a> attribute should be applied to apply some spice to your links. The following values of <code>rel</code> should be used:
         </p>
+          <ul>
+          <li>license</li>
+          <li>footnote</li>
+          </ul>
       </section>
       <section id="citations">
         <h3>Citations</h3>
