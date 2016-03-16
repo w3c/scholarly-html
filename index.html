@@ -39,10 +39,23 @@
 
 <section id="article">
       <h3>The <code>Article</code></h3>
-      <p>The first child of <code>article</code> must be <code>header</code>. The header should contain an <code>&lt;H1&gt;</code> with the title of the document. The following element must be a <code>&lt;div&gt;</code> with the role of <code>"contentinfo"</code> containing author and affilitation information. See <a href="#contentinfo-semantics">The <code>contentinfo</code> Region Semantics</a> for information about the semantic decoration of this element.</p>
+      <p>The first child of <code>article</code> must be <code>header</code>. The header should contain an <code>H1</code> with the title of the document. The following element must be a <code>div</code> with the role of <code>"contentinfo"</code> containing author and affilitation information. See <a href="#contentinfo-semantics">The <code>contentinfo</code> Region Semantics</a> for information about the semantic decoration of this element.</p>
       <p><code>Section</code> elements may be listed within the article at arbitrary depths, but each <code>section</code> must begin with an <code>hx</code> element, indicating a numbered section in the article. If the sections require headings that exceed <code>h6</code>, <code>aria-level</code> must be included to indicate depth.</p>
+  
+    <figure id="arialevelexample" typeof="schema:SoftwareSourceCode" role="doc-example">
+        <pre>
+        <code>
+        &lt;h6>Granular Details about Zoology&lt;/h6>
+          &lt;p>...&lt;/p>
+            &lt;h6 aria-level="7">Even More Information!&lt;/h6>
+        </code>
+        </pre>
+    <figcaption>Example of a level 7 heading, using aria-level</figcaption>
+    </figure>
+    
 <p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
 </section>
+        
 <section id="hunk">
 <h3>Hunk Elements</h3>
 <p>Hunk elements are the meaningful blocks from which sections are built. They contain text and <a href="#inline">inline elements</a>.   There are several types of hunk elements. All content, ranging from long paragraphs to note references and footnotes can be captured using this specified set of elements. The method for distinguishing one from another in a machine-readable manner is specified in <a href="#semantics">Semantics Overlay.</a></p>
@@ -54,11 +67,11 @@
 
 <p>If <code>figure</code> is <code>typeof="sa:image"</code>, it is an image container. It must contain an <code>img</code> child element and should contain a <code>figcaption</code> labeling that image.</p>
 
-If <code>figure</code> is a <code>typeof="sa:table"</code>table, it is a table container. It must contain a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>. Table notes may also be included as <code>ol</code> with a <code>li</code> elements with the role of <code>doc-footnote</code>.
+<p>If <code>figure</code> is a <code>typeof="sa:table"</code>table, it is a table container. It must contain a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>. Table notes may also be included as <code>ol</code> with a <code>li</code> elements with the role of <code>doc-footnote</code>.</p>
 
-If <code>figure</code> is a <code>typeof="sa:formula"</code>, it is a formula container. It must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browser the math element must contain an annotation descendant with the TeX equivalent of the formula.
+<p>If <code>figure</code> is a <code>typeof="sa:formula"</code>, it is a formula container. It must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browser the math element must contain an annotation descendant with the TeX equivalent of the formula.</p>
 
-If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it is a code container. It must contain a <code>pre</code> element and, optionally, a <code>figcaption</code>. The <code>pre</code> element must contain a <code>code</code> element as its only child.
+<p>If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it is a code container. It must contain a <code>pre</code> element and, optionally, a <code>figcaption</code>. The <code>pre</code> element must contain a <code>code</code> element as its only child.</p>
 </section>
 
 <section id="inline">
@@ -89,32 +102,32 @@ time can say nothing but I told you so.
 <section id="interactive">
 <h3>Interactive Elements</h3>
 <p> information about iframes to come </p>
+    <p class="issue">Let's discuss details of iframes with the CG</p>
 </section>
 
 <section id="HTMLRoles">
   <h3>HTML Roles</h3>
     <p>It is possible to provide information about an HTML element by decorating it with the <a href="https://www.w3.org/TR/html51/dom.html#aria-role-attribute">role</a> attribute. The <a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA</a> vocabulary and its extensions provide convenient terms that are relevant to document structure. The following roles from ARIA and <a href="https://www.w3.org/TR/dpub-aria-1.0/">DPUB-ARIA</a> should be applied where appropriate:</p>
 <ul>
+    <li><a href="https://www.w3.org/TR/wai-aria-1.1/#contentinfo">contentinfo</a> to apply to the <code>div</code> containing author and affiliation information</li>
     <li><a href="https://www.w3.org/TR/wai-aria-1.1/#definition">definition</a> for defining a term, such as a keyword or a glossary term</li>
     <li><a href="https://www.w3.org/TR/wai-aria-1.1/#term">term</a> for a term corresponding to a defintion</li>
     <li><a href="https://www.w3.org/TR/wai-aria-1.1/#presentation">presentation</a> to indicate that an image is purely decorative</li>
-    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-abstract">doc-abstract</a> on the section that contains the abstract</li>
-    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-acknowledgments">doc-acknowledgments</a> on the section that contains acknowledgements (note that this is not the same as funding information).</li>
-    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-appendix">doc-appendix</a> on the section that contains the appendix</li>
-    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-bibliography">doc-bibliography</a> on the section or list that contains the references or works cited</li>
-    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-conclusion">doc-conclusion</a> on the section that explicity concludes the article</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-abstract">doc-abstract</a> on the <code>section</code> that contains the abstract</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-acknowledgments">doc-acknowledgments</a> on the <code>section</code> that contains acknowledgements (note that this is not the same as funding information).</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-appendix">doc-appendix</a> on the <code>section</code> that contains the appendix</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-bibliography">doc-bibliography</a> on the <code>section</code> or list that contains the references or works cited</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-conclusion">doc-conclusion</a> on the <code>section</code> that explicity concludes the article</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-dedication">doc-dedication</a> on the dedication element of the article (allowed on any hunk element)</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-endnote">doc-endnote</a> on an individual note item in a collection of notes</li>
-    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-dedication">doc-endnotes</a> on a section containing group of notes</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-dedication">doc-endnotes</a> on the <code>section</code> containing a group of notes</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-errata">doc-errata</a> on a ???</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-example">doc-example</a> on a hunk element containing an illustrative concept, such as a code sample.</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-footnote">doc-footnote</a> on a hunk element containing an individual note, such as information about the author.</li>
-   <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-introduction">doc-introduction</a> on the section introducing the article, if relevant</li>
+   <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-introduction">doc-introduction</a> on the <code>section</code> introducing the article, if relevant</li>
    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-subtitle">doc-subtitle</a> to indicate that a portion of a heading is a secondary or alrternate title of the work.</li>
-
-
-
-    </ul>  
+</ul>
+    
     <p class="issue">Should we require ARIA's table, grid, rowheader, and rowgroup?</p>
     <p class="issue">I did not include doc-biblioentry, doc-biblioref, doc-credit bc of extensive citation markup in JSON-LD</p>
     <p class="issue">doc-endnote, doc-endnotes are not in the current published draft of DPUB-ARIA. See <a href="http://rawgit.com/w3c/aria/master/aria/dpub.html">March DPUB-ARIA draft</a> </p>
