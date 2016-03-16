@@ -7,32 +7,47 @@ body {
   max-width: 21cm;
   margin: auto;
   line-height: 1.6;
-  position: relative;
   font-weight: 300;
   font-family: "Roboto", sans-serif;
 }
 
-/* banner */
-body::before {
-  content: "Community Draft";
+/* headers & headings */
+header > h1 {
+  margin: 0;
+  font-size: 3em;
+  padding-top: 4em;
+}
+div.banner {
+  display: flex;
+  justify-content: space-between;
+}
+div.banner > img {
+  height: 100%;
+}
+div.banner > div.status {
   color: #fff;
   background: #9400bf;
   width: 350px;
   padding: 10px;
-  position: absolute;
-  right: 0;
   text-align: right;
-}
-
-/* headers & headings */
-header {
-  padding-top: 8em;
-}
-header > h1 {
-  margin: 0;
 }
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.0375em;
+}
+h1, h2 {
+  color: #4b0061;
+}
+h2 {
+  margin-top: 3em;
+}
+h3 {
+  margin-top: 2.5em;
+}
+h4 {
+  font-weight: 300;
+  font-size: 1.2em;
+  font-variant: small-caps;
+  margin: 2em 0 0.5em 0;
 }
 
 /* code */

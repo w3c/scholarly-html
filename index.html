@@ -9,6 +9,10 @@
   </head>
   <body prefix="schema: http://schema.org">
     <header>
+      <div class="banner">
+        <img src="scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+        <div class="status">Community Draft</div>
+      </div>
       <h1>Scholarly HTML</h1>
     </header>
     <section>
@@ -62,7 +66,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
 <p><a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline elements</a> decorate, describe, and enrich text. Inside of hunk elements, heading elements, and captioning elements and inline elements can be used (and where applicable they can nest within one another). Inline images and inline math can be inlcuded as well. This can be accomplished using <code>img</code> for images or <code>math</code> equations. Equations can be displayed inline or as blocks within a paragaph. </p>
 <figure resource="#mathblock-example" id="mathblock-example">
           <pre><code>
-&lt;p>  
+&lt;p>
 If we should weep when clowns put on their show, if we should stumble when musicians play,
 
 &lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
@@ -545,7 +549,7 @@ time can say nothing but I told you so.
         </section>
         <section id="meta-notes">
           <h4>Notes</h4>
-          
+
           </p>
           <!-- these are rdf:HTML? probably not -->
         </section>
