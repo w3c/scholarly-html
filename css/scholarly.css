@@ -1,17 +1,50 @@
 
 @import "normalize.css/normalize.css";
+@import "../fonts/roboto.css";
+@import "../fonts/roboto-mono.css";
 
 body {
   max-width: 21cm;
   margin: auto;
   line-height: 1.6;
+  position: relative;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+}
+
+/* banner */
+body::before {
+  content: "Community Draft";
+  color: #fff;
+  background: #9400bf;
+  width: 350px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+
+/* headers & headings */
+header {
+  padding-top: 8em;
+}
+header > h1 {
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.0375em;
+}
+
+/* code */
+code, pre {
+  font-family: "Roboto Mono", monospace;
 }
 
 /* link types */
 a.onto {
-  font-family: monospace;
-  text-decoration: underline;
-  text-decoration-color: #fc0;
+  font-family: "Roboto Mono", monospace;
+  text-decoration: none;
+  background: linear-gradient(to top, rgba(255, 0, 0, 0.4), rgba(255, 0, 0, 0.4) 15%, #fff 16%);
   color: #434343;
 }
 
@@ -20,3 +53,11 @@ p.issue {
   border-left: 3px solid red;
   padding: 0.5em 1em;
 }
+
+/*
+  XXX
+  section titles
+  top header
+  figure styles
+  links
+*/

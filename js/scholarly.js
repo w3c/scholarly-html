@@ -10,17 +10,19 @@ function makeID (el) {
 
 // XXX
 function detoc () {
-
+  // copy some toc code from somewhere
+  // generate numbering, too
 }
 
 // XXX
 function deref () {
-
+  // we have a builtin list (for now)
 }
 
 // XXX
 function defigure () {
-
+  // use the typeof to inject schema:name (with counter)
+  // maybe load up PrismJS too?
 }
 
 // Handle <a>foo:concept</a> where 'foo' is a known ontology that we support.
