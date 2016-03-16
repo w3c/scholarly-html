@@ -1,0 +1,14 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "mocha": false,
+    "node": false
+  },
+  "rules": {
+    "strict": 0,
+    "quotes": [2, "single"],
+    "semi": [2, "always"]
+  },
+  "plugins": []
+}
