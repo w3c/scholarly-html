@@ -531,12 +531,7 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
         </section>
         <section id="meta-notes">
           <h4>Notes</h4>
-          <p>If the document has notes, they are listed in a <code>section</code>
-            with the role of <code>doc-endnotes</code>. The content of that <code>section</code>
-            is an <code>h2</code> title appropriate for it, followed by either a <code>ul</code> or
-            <code>ol</code>. Each <code>li</code> should be labeled with the role of <code>doc-endnote</code>. Note that this role is used for endnotes and footnotes alike.</p>
-            <!-- a word about note references? doc-noteref or rel?-->
-
+          
           </p>
           <!-- these are rdf:HTML? probably not -->
         </section>
@@ -555,9 +550,14 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
       </section>
       <section id="footnotes">
         <h3>Footnotes &amp; Endnotes</h3>
-        <p>
 
-        </p>
+          <p>If the document has notes, they are listed in a <code>section</code>
+            with the role of <code>doc-endnotes</code>. The content of that <code>section</code>
+            is an <code>h2</code> title appropriate for it, followed by either a <code>ul</code> or
+            <code>ol</code>. Each <code>li</code> should be labeled with the role of <code>doc-endnote</code>. Note that this role is used for endnotes and footnotes alike.</p>
+            <!-- a word about note references? doc-noteref or rel?-->
+
+
       </section>
       <section id="typing-sections">
         <h3>Typing Sections</h3>
@@ -566,19 +566,23 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
         </p>
         <section id="funding">
           <h3>Funding Information</h3>
-          <p>
-Funding informations is provided using a complex triples structure which can be summarized as follows:
-subject: receiver of funding (example: Author)
-predicate: string or sponsor role (example: wasFundedBy)
-object: funding organization (example: Bill &amp; Melinda Gates Foundation)
-This can be enhanced with information such as the award name and Role information. Here is a detailed example:</p>
-
+          <p>Funding informations is provided using a complex triples structure which can be summarized as follows:
+            <ul>
+<li>subject: receiver of funding (example: Author)</li>
+<li>predicate: string or sponsor role (example: wasFundedBy)</li>
+<li>object: funding organization (example: Bill &amp; Melinda Gates Foundation)</li></ul>
+<p>This can be enhanced with information such as the award name and Role information. Here is a detailed example:</p>
+</ul>
           </p>
         </section>
         <section id="disclosures">
           <h3>Disclosures</h3>
-          <p>
+          <p>Disclosure information is a list of disclosure actions described in a simple triples structure.</p>
+<ul><li>The subject is always one of the contributor roles (example: Author)</li>
+<li>The name of the action (nerd-talk: predicate, human-speak: verb) is a string describing the action (example: "received beer from")</li>
+<li>The recipient, or object, is the direct object of the sentence (example: Guinness) </li></p>
 
+<p>Add example
           </p>
         </section>
         <section id="acknowledgements">
