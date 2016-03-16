@@ -41,7 +41,7 @@
 </section>
 <section id="hunk">
 <h3>Hunk Elements</h3>
-<p>Hunk elements are the meaningful blocks from which sections are built. They contain text and inline elements. There are several types of hunk elements. All content, ranging from long paragraphs to note references and footnotes can be captured using this specified set of elements. The method for distinguishing one from another in a machine-readable manner is specified in <a href="#semantics">Semantics Overlay.</a></p>
+<p>Hunk elements are the meaningful blocks from which sections are built. They contain text and <a href="#inline">inline elements</a>.   There are several types of hunk elements. All content, ranging from long paragraphs to note references and footnotes can be captured using this specified set of elements. The method for distinguishing one from another in a machine-readable manner is specified in <a href="#semantics">Semantics Overlay.</a></p>
 <p>The most common hunk element is <a href="https://www.w3.org/TR/html51/semantics.html#the-p-element"><code>p</code></a>.
 <p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-blockquote-element"><code>blockquote</code></a>, <a href="https://www.w3.org/TR/html51/semantics.html#the-ul-element"><code>ul</code></a>, <a href ="https://www.w3.org/TR/html51/semantics.html#the-ol-element"<code>ol</code></a>, and <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"><code>dl</code></a> elements can be used as they typically would and require no special treatment.</p>
 <p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"<code>aside</code></a> hunk element is used to capture portions of content that stand apart from the main flow of content. These can be separated from the article without having impact on the reader's understanding of the article. A common use is text boxes in print. If the <code>aside</code> contains an <code>header</code> heading element, that heading must be the first element child and its numeric part must reflect its depth, making use of aria-level according to the same rules as apply for section. The other children of aside must all be hunk elements. For example, if an <code>aside</code> follows a <code>section</code> with a level 3 heading, the top-level heading in the <code>aside</code> should be <code>h4</code>.</p>
@@ -59,7 +59,21 @@ If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it 
 
 <section id="inline">
 <h3>Inline Elements</h3>
-<p><a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline elements</a> decorate, describe, and enrich text. Inside of hunk elements, heading elements, and captioning elements and inline elements can be used (and where applicable they can nest within one another).</p>
+<p><a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline elements</a> decorate, describe, and enrich text. Inside of hunk elements, heading elements, and captioning elements and inline elements can be used (and where applicable they can nest within one another). Inline images and inline math can be inlcuded as well. This can be accomplished using <code>img</code> for images or <code>math</code> equations. Equations can be displayed inline or as blocks within a paragaph. </p>
+<figure resource="#mathblock-example" id="mathblock-example">
+          <pre><code>
+&lt;p>  
+If we should weep when clowns put on their show, if we should stumble when musicians play,
+
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+
+&lt;semantics>&lt;mrow>&lt;mi>Δ&lt;/mi>&lt;msup>&lt;mi>E&lt;/mi>&lt;mn>2&lt;/mn>&lt;/msup>&lt;mspace width="0.222em">&lt;/mspace>&lt;mo>=&lt;/mo>&lt;mspace width="0.222em">&lt;/mspace>&lt;msub>&lt;mi>q&lt;/mi>&lt;mi>i&lt;/mi>&lt;/msub>&lt;mspace width="0.222em">&lt;/mspace>&lt;mo>×&lt;/mo>&lt;mspace width="0.222em">&lt;/mspace>&lt;mo stretchy="false" form="prefix">(&lt;/mo>&lt;msub>&lt;msup>&lt;mi>F&lt;/mi>&lt;mn>2&lt;/mn>&lt;/msup>&lt;mrow>&lt;mo stretchy="false" form="prefix">(&lt;/mo>&lt;mi>i&lt;/mi>&lt;mo>,&lt;/mo>&lt;mspace width="0.222em">&lt;/mspace>&lt;mi>j&lt;/mi>&lt;mo stretchy="false" form="postfix">)&lt;/mo>&lt;/mrow>&lt;/msub>&lt;mspace width="0.222em">&lt;/mspace>&lt;mo>/&lt;/mo>&lt;mspace width="0.222em">&lt;/mspace>&lt;msub>&lt;mi>ε&lt;/mi>&lt;mi>j&lt;/mi>&lt;/msub>&lt;mspace width="0.222em">&lt;/mspace>&lt;mspace width="0.222em">&lt;/mspace>&lt;msub>&lt;mi>ε&lt;/mi>&lt;mi>i&lt;/mi>&lt;/msub>&lt;mo stretchy="false" form="postfix">)&lt;/mo>&lt;/mrow>
+&lt;/semantics>&lt;/math>
+
+time can say nothing but I told you so.
+&lt;/p>          </code></pre>
+          <figcaption>
+
 </section>
 <section id="references">
    <h3>References</h3>
