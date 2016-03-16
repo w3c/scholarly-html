@@ -110,50 +110,8 @@ time can say nothing but I told you so.
 <p>It must feature a <code>DOCTYPE</code> as its preamble.</p>
 </section>
 
-    <section id="semantics">
-      <h2>Semantics Overlay</h2>
-      <p>
-        HTML provides an excellent backbone with which to capture the
-        <a href="#structure">structure</a> of a given text but is evidently limited when it comes to
-        capturing more domain-specific concepts such as people, spaceships,
-        <a href="http://existentialcomics.com/comic/122">Humean causation</a>, or
-        <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0109888">sthenurines</a>.
-        That is where semantic overlays with the ability to refine the meaning and relations of
-        HTML elements come into play. Scholarly HTML makes use of two standard mechanisms that
-        overlay additional semantics atop the HTML DOM: role-based semantics as defined by
-        <a role="doc-biblioref">WAI-ARIA</a> and <a role="doc-biblioref">DPUB-ARIA</a>, and
-        semantics rooted in structured data as captured by <a role="doc-biblioref">RDFa</a>.
-      </p>
-      <p>
-        Using technologies related to the semantic web can at times feel daunting and unrelated to
-        everyday web development. In order to suppress this disconnect, Scholarly HTML follows a
-        few simple guiding principles:
-      </p>
-      <ul>
-        <li>
-          The number of prefixes used for semantic properties is kept as small as possible;
-        </li>
-        <li>
-          There is no such thing as a URI (or URN, IRI, XRI, or whatever else confusing
-          contraption), everything is a URL;
-        </li>
-        <li>
-          Where somewhat more complex modeling is required, it is put together using a small set of
-          common patterns that might require some initial learning but can be applied regularly
-          with relative ease (notably <a href="#roles">roles</a> and actions).
-        </li>
-      </ul>
-      <p>
-        The properties that Scholarly HTML uses are naturally document-related (authorship,
-        keywords, license, citations, as well as specific structure types such as acknowledgements,
-        introduction, or funding), which additionally requires the ability to describe people and
-        organizations. There are numerous vocabularies that address this domain and which could be
-        used with <a role="doc-biblioref">RDFa</a>; however, for reasons detailed in
-        <a href="https://research.science.ai/article/web-first-data-citations#choice-of-ontology">Web-First
-        Data Citations</a> Scholarly HTML relies almost exclusively on
-        <a role="doc-biblioref">schema.org</a>, complemented by a small number of additions from
-        the <a href="#scholarly-article">Scholarly Article Vocabulary</a>.
-      </p>
+    <section id="common">
+      <h2>Common Constructs</h2>
       <section id="person-org">
         <h3>Persons &amp; Organizations</h3>
         <p>
@@ -301,6 +259,52 @@ time can say nothing but I told you so.
           </figcaption>
         </figure>
       </section>
+    </section>
+    <section id="semantics">
+      <h2>Semantics Overlay</h2>
+      <p>
+        HTML provides an excellent backbone with which to capture the
+        <a href="#structure">structure</a> of a given text but is evidently limited when it comes to
+        capturing more domain-specific concepts such as people, spaceships,
+        <a href="http://existentialcomics.com/comic/122">Humean causation</a>, or
+        <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0109888">sthenurines</a>.
+        That is where semantic overlays with the ability to refine the meaning and relations of
+        HTML elements come into play. Scholarly HTML makes use of two standard mechanisms that
+        overlay additional semantics atop the HTML DOM: role-based semantics as defined by
+        <a role="doc-biblioref">WAI-ARIA</a> and <a role="doc-biblioref">DPUB-ARIA</a>, and
+        semantics rooted in structured data as captured by <a role="doc-biblioref">RDFa</a>.
+      </p>
+      <p>
+        Using technologies related to the semantic web can at times feel daunting and unrelated to
+        everyday web development. In order to suppress this disconnect, Scholarly HTML follows a
+        few simple guiding principles:
+      </p>
+      <ul>
+        <li>
+          The number of prefixes used for semantic properties is kept as small as possible;
+        </li>
+        <li>
+          There is no such thing as a URI (or URN, IRI, XRI, or whatever else confusing
+          contraption), everything is a URL;
+        </li>
+        <li>
+          Where somewhat more complex modeling is required, it is put together using a small set of
+          common patterns that might require some initial learning but can be applied regularly
+          with relative ease (notably those from the <a href="#common">Common Constructs</a>
+          section).
+        </li>
+      </ul>
+      <p>
+        The properties that Scholarly HTML uses are naturally document-related (authorship,
+        keywords, license, citations, as well as specific structure types such as acknowledgements,
+        introduction, or funding), which additionally requires the ability to describe people and
+        organizations. There are numerous vocabularies that address this domain and which could be
+        used with <a role="doc-biblioref">RDFa</a>; however, for reasons detailed in
+        <a href="https://research.science.ai/article/web-first-data-citations#choice-of-ontology">Web-First
+        Data Citations</a> Scholarly HTML relies almost exclusively on
+        <a role="doc-biblioref">schema.org</a>, complemented by a small number of additions from
+        the <a href="#scholarly-article">Scholarly Article Vocabulary</a>.
+      </p>
       <section id="article-title-semantics">
         <h3>Article and Title Semantics</h3>
         <p>
