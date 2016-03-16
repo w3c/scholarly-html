@@ -52,16 +52,7 @@
         </pre>
     <figcaption>Example of a level 7 heading, using aria-level</figcaption>
     </figure>
-<<<<<<< HEAD
-    
 <p>Each section may contain zero or more <a href="#hunk">Hunk Elements</a> and <code>section</code> elements.</p>
-||||||| merged common ancestors
-    
-<p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
-=======
-
-<p>Each section may contain zero or more <i>Hunk Elements</i> and <code>section</code> elements.</p>
->>>>>>> 9d6ce1ac9f0c4699aad204c8241f0ac6f077f67c
 </section>
 
 <section id="hunk">
@@ -69,12 +60,12 @@
 <p>Hunk elements are the meaningful blocks from which sections are built. They contain text and <a href="#inline">inline elements</a>.   There are several types of hunk elements. All content, ranging from long paragraphs to note references and footnotes can be captured using this specified set of elements. The method for distinguishing one from another in a machine-readable manner is specified in <a href="#semantics">Semantics Overlay.</a></p>
 <p>The most common hunk element is <a href="https://www.w3.org/TR/html51/semantics.html#the-p-element"><code>p</code></a>.
 <p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-blockquote-element"><code>blockquote</code></a>, <a href="https://www.w3.org/TR/html51/semantics.html#the-ul-element"><code>ul</code></a>, <a href ="https://www.w3.org/TR/html51/semantics.html#the-ol-element"<code>ol</code></a>, and <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"><code>dl</code></a> elements can be used as they typically would and require no special treatment.</p>
-        
+
 <p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"<code>aside</code></a> hunk element is used to capture portions of content that stand apart from the main flow of content. These can be separated from the article without having impact on the reader's understanding of the article. A common use is text boxes in print. If the <code>aside</code> contains an <code>header</code> heading element, that heading must be the first element child and its numeric part must reflect its depth, making use of <code>aria-level</code> according to the same rules that apply for <code>section</code>. The other children of asid<code>aside</code>e must all be hunk elements. For example, if an <code>aside</code> follows a <code>section</code> with a level 3 heading, the top-level heading in the <code>aside</code> should be <code>h4</code>.</p>
 
 <section id="figures">
     <h4>Figures</h4>
-<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-figure-element"><code>figure</code></a> element is a general container for self-contained content units that are embedded inside the main body of the text. It can come in several flavors that are dictated by its <code>typeof</code> attribute. Common uses for <code>figure</code> are as a container for images, tables, equations, and computer code.</p> 
+<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-figure-element"><code>figure</code></a> element is a general container for self-contained content units that are embedded inside the main body of the text. It can come in several flavors that are dictated by its <code>typeof</code> attribute. Common uses for <code>figure</code> are as a container for images, tables, equations, and computer code.</p>
 
 <p>If <code>figure</code> is <code>typeof="sa:image"</code>, it is an image container. It must contain an <code>img</code> child element and should contain a <code>figcaption</code> labeling that image.</p>
 
@@ -694,8 +685,96 @@ time can say nothing but I told you so.
       <section id="citations">
         <h3>Citations</h3>
         <p>
+          Citations in scholarly articles provide a way to reference the work of others upon which
+          one builds. In the pre-Web era, they essentially served as links by carrying sufficient
+          information for one to find the reference in question, in a relatively compact manner.
+        </p>
+        <p>
+          In a Web world, it can seem tempting to simply replace citations with links, but there is
+          value in keeping the limited amount of metadata about the cited object that they provide
+          inlined in the document. Links rot and disappear; when that happens the rest of the
+          information can prove crucial in finding the referenced object at some other location.
+          Unique identifiers with indirect resolution, such as DOIs, might seem like a solution to
+          this problem but being opaque humans routinely get them wrong. (DOIs additionally suffer
+          from a single point of failure for resolution.) All things considered, including a link
+          for convenience and human-readable metadata about the referenced object is likely the
+          most resilient way to cite another document.
+        </p>
+        <p>
+          In the print universe, reducing the number of pages one needs to use can be a noticeable
+          cost-saver. Given that scholarly articles can easily feature dozens if not hundreds of
+          cited references, making use of compact reference conventions (as well as smaller font
+          sizes) made sense. Over time, however, what was a sensible idea degenerated into a
+          territorial maze of gratuitously heterogenous conventions to the point where there now
+          exist <a href="http://citationstyles.org/">over 8000 citation styles</a>.
+        </p>
+        <p>
+          There is no value in Scholarly HTML so much as attempting to support all citation styles.
+          The Web does not need the compactness. Citations and references should be both data-rich
+          and human-accessible, something on which the traditional formats fail, in some cases
+          quite spectacularly.
+        </p>
+        <p>
+          For accessibility purposes, Scholarly HTML recommends that references be formatted in such
+          a manner that they read naturally in the article's natural language, with articulations
+          between the metadata parts, as below:
+        </p>
+        <figure resource="#citation-example" id="citation-example">
+          <pre><code>
+&lt;li typeof="schema:WebPage" role="doc-biblioentry"
+    resource="http://semver.org/"
+    property="schema:citation" id="some-id">
+ &lt;cite property="schema:name">
+   &lt;a href="http://semver.org/">Semantic Versioning 2.0.0</a>
+ &lt;/cite>,
+  by&lt;span property="schema:author" typeof="schema:Person">
+   &lt;span property="schema:givenName">Tom</span>
+   &lt;span property="schema:familyName">Preston-Werner</span>
+ &lt;/span>; published in
+ &lt;time property="schema:datePublished" datatype="xsd:gYear" datetime="2014">2014</time>
+ &lt;span property="schema:potentialAction" typeof="schema:ReadAction">
+   &lt;meta property="schema:actionStatus" content="CompletedActionStatus">
+    (accessed on
+   &lt;time property="schema:endTime" datatype="xsd:date" datetime="2016-02-01">01 Feb 2016</time>)
+ &lt;/span>.
+&lt;/li>
+          </code></pre>
+          <p>
+            The above code renders as:
+          </p>
+          <ol>
+            <li typeof="schema:WebPage" role="doc-biblioentry" resource="http://semver.org/"
+                property="schema:citation" id="some-id">
+              <cite property="schema:name">
+                <a href="http://semver.org/">Semantic Versioning 2.0.0</a>
+              </cite>,
+              by <span property="schema:author" typeof="schema:Person">
+                <span property="schema:givenName">Tom</span>
+                <span property="schema:familyName">Preston-Werner</span>
+              </span>; published in
+              <time property="schema:datePublished" datatype="xsd:gYear" datetime="2014">2014</time>
+              <span property="schema:potentialAction" typeof="schema:ReadAction">
+                <meta property="schema:actionStatus" content="CompletedActionStatus">
+                (accessed on
+                <time property="schema:endTime" datatype="xsd:date" datetime="2016-02-01">01 Feb 2016</time>)
+              </span>.
+            </li>
+          </ol>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of a readable citation.
+            </span>
+          </figcaption>
+        </figure>
+        <p>
 
         </p>
+        <!--
+          XXX explain that in order to reproduce the vagaries of print citations, what matters is
+          the data. One approach would be to extract the schema.org information, convert it to CSL
+          variables (link), and use a CSL implementation to produce the output
+        -->
       </section>
       <section id="footnotes">
         <h3>Footnotes &amp; Endnotes</h3>
@@ -762,6 +841,7 @@ time can say nothing but I told you so.
         - link to group
         - needs more sthenurines
         - proper punctuation
+        - some notes on using Semantic CSS
       -->
     </section>
   </body>
