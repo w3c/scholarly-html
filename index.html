@@ -119,6 +119,7 @@ time can say nothing but I told you so.
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-abstract">doc-abstract</a> on the <code>section</code> that contains the abstract</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-acknowledgments">doc-acknowledgments</a> on the <code>section</code> that contains acknowledgements (note that this is not the same as funding information).</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-appendix">doc-appendix</a> on the <code>section</code> that contains the appendix</li>
+    <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-biblioentry">doc-biblioentry</a> on the list item that includes a citation</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-bibliography">doc-bibliography</a> on the <code>section</code> or list that contains the references or works cited</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-conclusion">doc-conclusion</a> on the <code>section</code> that explicity concludes the article</li>
     <li><a href="https://www.w3.org/TR/dpub-aria-1.0/#doc-dedication">doc-dedication</a> on the dedication element of the article (allowed on any hunk element)</li>
@@ -675,12 +676,15 @@ time can say nothing but I told you so.
       </section>
       <section id="flavored-links">
         <h3>Flavored Links</h3>
-        <p>The <a href="https://www.w3.org/TR/html51/semantics.html#linkTypes"><code>rel</code></a> attribute should be applied to apply some spice to your links. The following values of <code>rel</code> should be used:
+        <p>The <a href="https://www.w3.org/TR/html51/semantics.html#linkTypes"><code>rel</code></a> attribute should be applied to apply some spice to your links. The following values of <code>rel</code> should be used on the link that refers to these elements
         </p>
           <ul>
-          <li>license</li>
+          <lI>author</lI>
           <li>footnote</li>
+         <li>license</li>
+         <li>stylesheet</li>     
           </ul>
+          <p class="issue">There are many values for rel, such as glossary and bibliography that look like they are useful, but based on the definition, it sounds like they point to the section containing the whole biblio. Not so helpful. rel="citation" or "biblioentry" would be more valuable.</p>
       </section>
       <section id="citations">
         <h3>Citations</h3>
