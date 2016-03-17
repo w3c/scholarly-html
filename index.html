@@ -37,7 +37,7 @@
           &amp;
           <a href="http://berjon.com/">Robin Berjon</a>,
           <a href="https://twitter.com/robinberjon">@robinberjon</a>
-           (<a href="https://science.ai/">science.ai</a>)
+           (<a href="http://science.ai/">science.ai</a>)
         </dd>
         <dt>Bugs &amp; Feedback</dt>
         <dd>
@@ -883,8 +883,28 @@ time can say nothing but I told you so.
 <li>predicate: string or sponsor role (example: wasFundedBy)</li>
 <li>object: funding organization (example: Bill &amp; Melinda Gates Foundation)</li></ul>
 <p>This can be enhanced with information such as the award name and Role information. Here is a detailed example:</p>
-</ul>
-          </p>
+<figure typeof="schema:SoftwareSourceCode" resource="#funding-example" id="funding-example" role="doc-example">
+    <pre><code>
+&lt;h2 role="doc-title">Funding&lt;/h2>
+    &lt;ol>
+        &lt;li resource=".scienceai:94fc3550-e08f-11e5-a276-89522f398bc4">
+            &lt;span typeof="schema:Person" resource=".scienceai:94fc3550-e08f-11e5-a276-89522f398bc4">
+                &lt;span>&lt;span property="schema:name">Xiong Ding&lt;/span> 
+                    &lt;span property="schema:givenName">Xiong&lt;/span> 
+                    &lt;span property="schema:familyName">Ding&lt;/span>&lt;/span>&lt;/span> 
+            &lt;span property="schema:name">acknowledge support from&lt;/span>
+            &lt;ul>
+               &lt;li>&lt;span typeof="schema:Organization" resource="http://www.nuc.edu.cn/">&lt;a href="http://www.nuc.edu.cn/" property="schema:name">North University of China&lt;/a>&lt;/span>&lt;/li>&lt;/ul>
+            &lt;span property="schema:roleOffer" typeof="schema:FundingSource">
+                &lt;span property="schema:name">The 11th Graduate Science and Technology Projects&lt;/span> (&lt;span property="schema:alternateName">Natural Science Project&lt;/span>) 
+                &lt;span property="schema:serialNumber">20141130&lt;/span>&lt;/span>&lt;/li>
+     &lt;/ol>
+                
+               </code></pre>
+    
+    <figcaption></figcaption>
+            </figure>                                       
+          
         </section>
         <section id="disclosures">
           <h3>Disclosures</h3>
