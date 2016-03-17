@@ -1,5 +1,6 @@
 
 import sa from '@scienceai/scholarly-article';
+import refs from './refs';
 
 let curID = 0;
 function makeID (el) {
@@ -91,16 +92,35 @@ function makeTOCAtLevel ($parent, current) {
   return $ol;
 }
 
-// XXX
-let refs = {};
 function deref () {
+  let $dl = document.createElement('dl')
+    , seen = {}
+  ;
   // we have a builtin list (for now)
   Array.from(document.querySelectorAll('a[role="doc-biblioref"]'))
     .forEach($ref => {
-      refs[$ref.textContent] = true;
+      let key = $ref.textContent;
+      if (!refs[key]) return console.error(`No ref: ${key}`);
+      $ref.href = `#ref-${key}`;
+      if (seen[key]) return;
+      seen[key] = true;
+      let $dt = document.createElement('dt');
+      $dt.id = `ref-${key}`;
+      $dt.textContent = key;
+      $dl.appendChild($dt);
+      let $div = document.createElement('div');
+      $div.innerHTML = refs[key];
+      $dl.appendChild($div.firstElementChild);
     })
   ;
-  console.log(refs);
+  let $section = document.createElement('section')
+    , $h2 = document.createElement('h2')
+  ;
+  $section.id = 'biblio-references';
+  $h2.textContent = 'References';
+  $section.appendChild($h2);
+  $section.appendChild($dl);
+  document.body.appendChild($section);
 }
 
 // XXX
@@ -129,8 +149,8 @@ function deontology () {
 }
 
 function despec () {
-  detoc();
   deref();
+  detoc();
   defigure();
   deontology();
 }
