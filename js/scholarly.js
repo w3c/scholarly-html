@@ -92,8 +92,15 @@ function makeTOCAtLevel ($parent, current) {
 }
 
 // XXX
+let refs = {};
 function deref () {
   // we have a builtin list (for now)
+  Array.from(document.querySelectorAll('a[role="doc-biblioref"]'))
+    .forEach($ref => {
+      refs[$ref.textContent] = true;
+    })
+  ;
+  console.log(refs);
 }
 
 // XXX
