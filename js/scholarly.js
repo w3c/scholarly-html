@@ -29,8 +29,10 @@ function detoc () {
       if (level > 6) $h.setAttribute('aria-level', level);
     })
   ;
-  let $ol = makeTOCAtLevel(document.body, [0]);
-  document.querySelector('div[role="contentinfo"]').appendChild($ol);
+  let $ol = makeTOCAtLevel(document.body, [0])
+    , $ci = document.querySelector('div[role="contentinfo"]')
+  ;
+  $ci.insertBefore($ol, $ci.firstChild);
 }
 function depth ($sec) {
   let len = 2
