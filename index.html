@@ -15,15 +15,25 @@
       </div>
       <h1>Scholarly HTML</h1>
     </header>
+    <!--
+      XXX
+      - dedication? see doc-dedication
+      - syntactic constraints (prefix)
+      - link to bugs
+      - link to group
+      - needs more sthenurines
+      - proper punctuation
+      - some notes on using Semantic CSS
+    -->
+    <div role="contentinfo">
+
+    </div>
     <section role="doc-abstract">
       <h2>Abstract</h2>
       <p>
 
       </p>
-    <section>
-    <div role="contentinfo">
-
-    </div>
+    </section>
     <section id="introduction" role="doc-introduction">
       <h2>Introduction</h2>
       <p>
@@ -153,6 +163,7 @@ time can say nothing but I told you so.
          </ul>
          </p>
 <p>It must feature a <code>DOCTYPE</code> as its preamble.</p>
+</section>
 </section>
 
     <section id="semantics">
@@ -296,7 +307,7 @@ time can say nothing but I told you so.
           Let's look at the example of authorship information. Some properties of the agent who
           authored the document (person or organization), such as their name, are considered to be
           true outside the limited context of the document. These properties will be set directly on
-          the agent. 
+          the agent.
         </p>
         <p>
           On the other hand, other properties are considered to be specific to the agent
@@ -853,43 +864,30 @@ time can say nothing but I told you so.
           </p>
         </section>
       </section>
+    </section>
+    <section id="scholarly-article">
+      <h2>Scholarly Article Vocabulary</h2>
+      <p>
+        A limited number of classes and properties are currently not available from
+        <a role="doc-biblioref">schema.org</a>. In most if not all cases it would be desirable to
+        make them available there, but while work is progressing it is simpler to define them
+        ourselves.
+      </p>
+      <p class="issue">
+        The current URL for the Scholarly Article vocabulary is
+        <code>http://ns.science.ai/</code>. It may be desirable (should the vocabulary persist) to
+        use a different URL. But this issue might go away if schema.org steps up.
+      </p>
+      <p>
+        We define the following classes and properties:
+      </p>
+      <dl></dl>
+    </section>
+    <section id="processing-model">
+      <h2>Processing Model</h2>
       <!--
-        XXX
-        - dedication? see doc-dedication
-        - syntactic constraints (prefix)
-      -->
-      <section id="scholarly-article">
-        <h3>Scholarly Article Vocabulary</h3>
-        <p>
-          A limited number of classes and properties are currently not available from
-          <a role="doc-biblioref">schema.org</a>. In most if not all cases it would be desirable to
-          make them available there, but while work is progressing it is simpler to define them
-          ourselves.
-        </p>
-        <p class="issue">
-          The current URL for the Scholarly Article vocabulary is
-          <code>http://ns.science.ai/</code>. It may be desirable (should the vocabulary persist) to
-          use a different URL. But this issue might go away if schema.org steps up.
-        </p>
-        <p>
-          We define the following classes and properties:
-        </p>
-        <dl></dl>
-      </section>
-      <section id="processing-model">
-        <h3>Processing Model</h3>
-        <!--
-          - basically explain what a processor ignores and what its internal model looks like
-          - the processing extracts (almost) pure HTML, it then uses the RDFa to enrich that
-        -->
-      </section>
-      <!--
-        XXX
-        - link to bugs
-        - link to group
-        - needs more sthenurines
-        - proper punctuation
-        - some notes on using Semantic CSS
+        - basically explain what a processor ignores and what its internal model looks like
+        - the processing extracts (almost) pure HTML, it then uses the RDFa to enrich that
       -->
     </section>
   </body>
