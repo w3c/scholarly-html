@@ -3,6 +3,12 @@
 @import "../fonts/roboto.css";
 @import "../fonts/roboto-mono.css";
 
+/*
+  XXX
+  figure styles
+  links
+*/
+
 body {
   max-width: 21cm;
   margin: auto;
@@ -50,9 +56,18 @@ h4 {
   margin: 2em 0 0.5em 0;
 }
 
-/* code */
-code, pre {
-  font-family: "Roboto Mono", monospace;
+/* contentinfo */
+[role="contentinfo"] a {
+  text-decoration: none;
+}
+ol[role="directory"], [role="directory"] ol {
+  list-style-type: none;
+}
+[role="contentinfo"] dt {
+  font-weight: bold;
+}
+[role="contentinfo"] dd {
+  margin-bottom: 1em;
 }
 
 /* link types */
@@ -62,11 +77,10 @@ a.onto {
   background: linear-gradient(to top, rgba(255, 0, 0, 0.4), rgba(255, 0, 0, 0.4) 15%, #fff 16%);
   color: #434343;
 }
-[role="directory"] a {
-  text-decoration: none;
-}
-ol[role="directory"], [role="directory"] ol {
-  list-style-type: none;
+
+/* code */
+code, pre {
+  font-family: "Roboto Mono", monospace;
 }
 
 /* special boxes */
@@ -85,11 +99,3 @@ p.issue {
     margin: 0 2em;
   }
 }
-
-
-/*
-  XXX
-  figure styles
-  links
-  vocabulary
-*/
