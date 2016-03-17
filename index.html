@@ -65,7 +65,7 @@
         <p>Scholarly articles are still primarily published as unstructured data in which most of the information created by the research and the practice of authoring is lost. Document technology has reached a level of maturity and universality that makes this situation no longer tenable. Information cannot be disseminated if it is destroyed before even having left its creator’s laptop.</p>
         <p>According to the New York Times, adding structured information to their recipes improved their discoverability to the point of producing an immediate rise of 52 percent in traffic (<a role="doc-biblioref">NYT</a>). At this point in time, cupcake recipes are reaping greater benefits from modern data format practices than the whole scientific endeavour.</p>
         <p>This places a great burden on tool developers and service providers as well. Anyone who has explored the world of extracting data from inert publications has built their own complex toolset, offering no interoprability, no opportunity for cooperative improvements, and little or no growth in discoverability or meta-analysis in this area. </p>
-        <p>To address these issues, we have followed an approach rooted in established best practices for the reuse of open, standard formats. We propose an "HTML Vernacular", a set of guidelines for the creation of domain-specific data formats that make use of HTML’s inherent extensibility  (<a role="biblioref">Science.AI, 2015</a>). Using the vernacular foundation overlaid with schema.org metadata and proposed extensions to it, we have produced a format for the authoring and interchange of scholarly articles built on open standards, ready for all to use. We hope that this format will be usable <a role="biblioref" href="http://www.nytimes.com/2016/03/16/science/asap-bio-biologists-published-to-the-internet.html?_r=1">rogue scientists</a> who choose to publish their articles on their own.</p>
+        <p>To address these issues, we have followed an approach rooted in established best practices for the reuse of open, standard formats. We propose an "HTML Vernacular", a set of guidelines for the creation of domain-specific data formats that make use of HTML’s inherent extensibility  (<a role="biblioref">Science.AI, 2015</a>). Using the vernacular foundation overlaid with schema.org metadata and proposed extensions to it, we have produced a format for the authoring and interchange of scholarly articles built on open standards, ready for all to use. We hope that this format will be usable by <a role="biblioref" href="http://www.nytimes.com/2016/03/16/science/asap-bio-biologists-published-to-the-internet.html?_r=1">rogue scientists</a> who choose to publish their articles on their own.</p>
         <p>Our high-level goals are to:</p>
         <ul>
             <li>Enable structured metadata, accessibility, and internationalisation.</li>
@@ -74,12 +74,12 @@
             <li>Build on top of open, royalty-free standards.</li>
             <li>Long-term viability as a data format.</li>
     </ul>
-      <p>Where semantic modeling is concerned, our approach is to stick as much as possible to the schema.org. Beyond the obvious advantages there are in reusing a vocabulary that is supported by all the major search engines and is actively being developed towards enabling a shared understanding of many useful concepts, it also provides a protection against <i>ontological drift</i> whereby a new vocabulary is defined by a small group with insufficient input from a broader community of practice. A language that solely a single participant understands is of limited value.</p>
+      <p>Where semantic modeling is concerned, our approach is to stick as much as possible to the schema.org. Beyond the obvious advantages there are in reusing a vocabulary that is supported by all the major search engines and is actively being developed towards enabling a shared understanding of many useful concepts, it also provides a protection against <i>ontological drift</i> whereby a new vocabulary is defined by a small group with insufficient input from a broader community of practice. A language that is only understood by one person is of limited value.</p>
     <p>In a limited number of cases we have had to depart from schema.org, using the <code>https://ns.science.ai/</code>, prefixed with <code>sa:</code>. Our goal is to work with schema.org in order to extend their vocabulary, and we will align our usage with the outcome of these discussions.</p>
       </section>
     <section id="structure">
       <h2>Structure</h2>
-      <p>A Scholarly HTML document is a valid <a role="doc-biblioref">HTML</a> document that follows some additional rules to specialize its meaning and make it predictable to processors wishing to produce or consume scholarly articles. These rules are outlined in the following sections. While valuable on its own, the content structure defined here is simply a stepping stone to enable semantic enrichment, detailed in <a href="#semantics">Semantics Overlays</a>. If you would like to write a validation tool, please join us on GitHub. </p>
+      <p>A Scholarly HTML document is a valid <a role="doc-biblioref">HTML</a> document that follows some additional rules to specialize its meaning and make it predictable to processors wishing to produce or consume scholarly articles. These rules are outlined in the following sections. While valuable on its own, the content structure defined here is simply a stepping stone to enable semantic enrichment, detailed in <a href="#semantics">Semantics Overlay</a>. If you would like to write a validation tool, please join us on GitHub. </p>
 <section id="Root">
       <h3>The <code>Root</code> and <code>Head</code></h3>
       <p>The document must be encoded in UTF-8 and transmitted with a media type of <code>text/html</code>.
@@ -110,7 +110,7 @@
 <p>The most common hunk element is <a href="https://www.w3.org/TR/html51/semantics.html#the-p-element"><code>p</code></a>.
 <p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-blockquote-element"><code>blockquote</code></a>, <a href="https://www.w3.org/TR/html51/semantics.html#the-ul-element"><code>ul</code></a>, <a href ="https://www.w3.org/TR/html51/semantics.html#the-ol-element"<code>ol</code></a>, and <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"><code>dl</code></a> elements can be used as they typically would and require no special treatment.</p>
 
-<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"<code>aside</code></a> hunk element is used to capture portions of content that stand apart from the main flow of content. These can be separated from the article without having impact on the reader's understanding of the article. A common use is text boxes in print. If the <code>aside</code> contains an <code>header</code> heading element, that heading must be the first element child and its numeric part must reflect its depth, making use of <code>aria-level</code> according to the same rules that apply for <code>section</code>. The other children of asid<code>aside</code>e must all be hunk elements. For example, if an <code>aside</code> follows a <code>section</code> with a level 3 heading, the top-level heading in the <code>aside</code> should be <code>h4</code>.</p>
+<p>The <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"<code>aside</code></a> hunk element is used to capture portions of content that stand apart from the main flow of content. These can be separated from the article without having impact on the reader's understanding of the article. A common use is text boxes in print. If the <code>aside</code> contains an <code>header</code> heading element, that heading must be the first element child and its numeric part must reflect its depth, making use of <code>aria-level</code> according to the same rules that apply for <code>section</code>. The other children of <code>aside</code> must all be hunk elements. For example, if an <code>aside</code> follows a <code>section</code> with a level 3 heading, the top-level heading in the <code>aside</code> should be <code>h4</code>.</p>
 
 <section id="figures">
     <h4>Figures</h4>
@@ -120,7 +120,7 @@
 
 <p>If <code>figure</code> is a <code>typeof="sa:table"</code>table, it is a table container. It must contain a <code>table</code> element. If there is a table caption, it should be included using the <code>caption</code> child element of the table, and not the <code>figcaption</code> child of the <code>figure</code>. Table notes may also be included as <code>ol</code> with <code>li</code> elements with the role of <code>doc-footnote</code>.</p>
 
-<p>If <code>figure</code> is a <code>typeof="sa:formula"</code>, it is a formula container. It must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browsers the math element must contain an annotation descendant with the TeX equivalent of the formula.</p>
+<p>If <code>figure</code> is a <code>typeof="sa:formula"</code>, it is a formula container. It must contain a <code>math</code> element and, optionally, a <code>figcaption</code> describing the formula. The <code>math</code> element must be valid MathML 3. Additionally, given the dismal state of support for MathML in Web browsers, the math element must contain an annotation descendant with the TeX equivalent of the formula.</p>
 
 <p>If <code>figure</code> is a <code>typeof="schema:SoftwareSourceCode"</code>, it is a code container. It must contain a <code>pre</code> element and, optionally, a <code>figcaption</code>. The <code>pre</code> element must contain a <code>code</code> element as its only child.</p>
 </section>
@@ -128,7 +128,7 @@
 
 <section id="inline">
 <h3>Inline Elements</h3>
-<p><a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline elements</a> decorate, describe, and enrich text. Inline elements can be usied inside of hunk elements, heading elements, and captioning elements. Where applicable, they can nest within one another. Inline images and inline math can be inlcuded as well. This can be accomplished using <code>img</code> for images or <code>math</code> for formulas. Equations can be displayed inline or as blocks within a paragaph. </p>
+<p><a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline elements</a> decorate, describe, and enrich text. Inline elements can be used inside of hunk elements, heading elements, and captioning elements. Where applicable, they can nest within one another. Inline images and inline math can be included as well. This can be accomplished using <code>img</code> for images or <code>math</code> for formulas. Equations can be displayed inline or as blocks within a paragaph. </p>
 <figure typeof="schema:SoftwareSourceCode" resource="#mathblock-example" id="mathblock-example" role="doc-example">
           <pre><code>
 &lt;p>
@@ -258,7 +258,7 @@ time can say nothing but I told you so.
         </p>
         <p>
           If the entity in question has a URL then it is best to use that as its identifier (using
-          the <code>resource</code> attribute) and additionally to provide it as a link using the
+          the <code>resource</code> attribute) and also to provide it as a link using the
           <code>a</code> element (see the <a href="#person-example">person example</a> for an
           instance of this).
         </p>
@@ -267,9 +267,9 @@ time can say nothing but I told you so.
           <a>schema:givenName</a>/<a>schema:familyName</a><a>schema:additionalName</a> triple and
           the <a>schema:name</a> (which can be considered to contain the name as the person wishes
           it to be displayed) for a person then it is (perhaps counterintuitively) best to
-          include <em>all</em> of them and then use CSS (typically sibling selectors) to hide the
-          extraneous ones (alternatively, they can be captured using the <code>meta</code> element).
-          The reason for this is that it exposes more information to machine consumers without
+          include <em>all</em> of them. CSS (typically sibling selectors) can then be used  to hide the
+          extraneous ones. Alternatively, they can be captured using the <code>meta</code> element.
+          This exposes more information to machine consumers without
           having a negative impact on human readers.
         </p>
         <figure typeof="schema:SoftwareSourceCode" resource="#person-example" id="person-example">
@@ -294,7 +294,7 @@ time can say nothing but I told you so.
           </figcaption>
         </figure>
         <p>
-          Here is also an organization:
+          Here is an organization:
         </p>
         <figure typeof="schema:SoftwareSourceCode" resource="#org-example" id="org-example">
           <pre><code>
