@@ -46,8 +46,6 @@ function desa () {
   ;
   sa.defines.forEach(def => {
     let id = def['@id'];
-    if (id === 'sa:Formula') seenFormula = true;
-    if (!seenFormula) return; // skip everything until Formula
     if (~skipList.indexOf(id)) return;
     let $dt = document.createElement('dt');
     $dt.id = id.replace(/^sa:/, '');
