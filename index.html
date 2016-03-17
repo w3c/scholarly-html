@@ -570,7 +570,7 @@ time can say nothing but I told you so.
       &lt;/span>
       &lt;a href="#sf" property="sa:roleAffiliation" resource="http://www.santafe.edu/">a&lt;/a>,
       &lt;a href="#umich" property="sa:roleAffiliation" resource="http://umich.edu/">b&lt;/a>,
-      &lt;a href="#note1" property="sa:roleAction" resource="#note1">1&lt;/a>
+      &lt;a href="#note1" property="sa:roleAction" resource="#note1" rel="footnote">1&lt;/a>
       &lt;ul>
         &lt;li property="schema:roleContactPoint" typeof="schema:ContactPoint">
           &lt;a href="mailto:jholland@umich.edu"
@@ -679,12 +679,11 @@ time can say nothing but I told you so.
         <p>The <a href="https://www.w3.org/TR/html51/semantics.html#linkTypes"><code>rel</code></a> attribute should be applied to apply some spice to your links. The following values of <code>rel</code> should be used on the link that refers to these elements
         </p>
           <ul>
-          <lI>author</lI>
           <li>footnote</li>
          <li>license</li>
          <li>stylesheet</li>
           </ul>
-          <p class="issue">There are many values for rel, such as glossary and bibliography that look like they are useful, but based on the definition, it sounds like they point to the section containing the whole biblio. Not so helpful. rel="citation" or "biblioentry" would be more valuable.</p>
+          <p class="issue">There are many values for rel, such as glossary and bibliography that look like they are useful, but based on the definition, it sounds like they point to the section containing the whole biblio. Not so helpful. rel="citation" or "biblioentry" would be more valuable. </p>
       </section>
       <section id="citations">
         <h3>Citations &amp; References</h3>
