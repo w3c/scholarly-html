@@ -62,6 +62,12 @@ a.onto {
   background: linear-gradient(to top, rgba(255, 0, 0, 0.4), rgba(255, 0, 0, 0.4) 15%, #fff 16%);
   color: #434343;
 }
+[role="directory"] a {
+  text-decoration: none;
+}
+ol[role="directory"], [role="directory"] ol {
+  list-style-type: none;
+}
 
 /* special boxes */
 p.issue {

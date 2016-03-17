@@ -29,8 +29,8 @@ function detoc () {
       if (level > 6) $h.setAttribute('aria-level', level);
     })
   ;
-  let $ul = makeTOCAtLevel(document.body, [0]);
-  document.querySelector('div[role="contentinfo"]').appendChild($ul);
+  let $ol = makeTOCAtLevel(document.body, [0]);
+  document.querySelector('div[role="contentinfo"]').appendChild($ol);
 }
 function depth ($sec) {
   let len = 2
@@ -55,8 +55,8 @@ function children ($parent, name) {
 function makeTOCAtLevel ($parent, current) {
   let $secs = children($parent, 'section');
   if ($secs.length === 0) return null;
-  let $ul = document.createElement('ul');
-  $ul.setAttribute('role', 'directory');
+  let $ol = document.createElement('ol');
+  $ol.setAttribute('role', 'directory');
   $secs.forEach($sec => {
     let $h = $sec.firstElementChild;
     if (!$h || !/^h[2-6]$/.test($h.localName)) return;
@@ -80,13 +80,13 @@ function makeTOCAtLevel ($parent, current) {
     }
     let $li = document.createElement('li');
     $li.appendChild($a);
-    $ul.appendChild($li);
+    $ol.appendChild($li);
     current.push(0);
     var $sub = makeTOCAtLevel($sec, current);
     if ($sub) $li.appendChild($sub);
     current.pop();
   });
-  return $ul;
+  return $ol;
 }
 
 // XXX
