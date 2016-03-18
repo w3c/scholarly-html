@@ -29,7 +29,6 @@
       - syntactic constraints (prefix)
       - needs more sthenurines
       - examples of everything
-      - proper punctuation
       - some notes on using Semantic CSS
       - needs more RDFa in the spec itself
     -->
@@ -168,7 +167,7 @@
         <figure typeof="schema:SoftwareSourceCode" role="doc-example" id="arialevelexample">
           <pre><code>
 &lt;h6>Granular Details about Zoology&lt;/h6>
-  &lt;p>...&lt;/p>
+  &lt;p>…&lt;/p>
     &lt;h6 aria-level="7">Even More Information!&lt;/h6>
           </code></pre>
           <figcaption>Example of a level 7 heading, using <code>aria-level</code></figcaption>
@@ -204,7 +203,7 @@
           The
           <a href="https://www.w3.org/TR/html51/semantics.html#the-dl-element"<code>aside</code></a>
           hunk element is used to capture portions of content that stand apart from the main flow of
-          content. These can be separated from the article without having impact on the reader's
+          content. These can be separated from the article without having impact on the reader’s
           understanding of the article. A common use is text boxes in print. If the
           <code>aside</code> contains an <code>header</code> heading element, that heading must be
           the first element child and its numeric part must reflect its depth, making use of
@@ -328,7 +327,7 @@
           information about iframes to come
         </p>
         <p class="issue">
-          Let's discuss details of iframes with the CG
+          Let’s discuss details of iframes with the CG
         </p>
       </section>
       <section id="HTMLRoles">
@@ -417,7 +416,7 @@
           </li>
         </ul>
         <p class="issue">
-          Should we require ARIA's table, grid, rowheader, and rowgroup?
+          Should we require ARIA’s table, grid, rowheader, and rowgroup?
         </p>
         <p class="issue">
           I did not include doc-credit bc of extensive citation markup in JSON-LD
@@ -537,7 +536,7 @@
               Example of a Person. This demonstrates the use of extraneous name information using
               <code>meta</code> elements. The container is a <code>span</code> but it could be any
               other container element. This also shows how <a>schema:name</a> can be used for the
-              person's preferred display name, as distinct from the more specific structured name
+              person’s preferred display name, as distinct from the more specific structured name
               information.
             </span>
           </figcaption>
@@ -563,7 +562,7 @@
           <figcaption>
             <span property="schema:name"></span>
             <span property="schema:description">
-              Example of an Organization. This also features the organization's address.
+              Example of an Organization. This also features the organization’s address.
             </span>
           </figcaption>
         </figure>
@@ -576,7 +575,7 @@
       <section id="roles">
         <h3>Schema Roles</h3>
         <!--
-          XXX needs rewrite, Dave doesn't understand, ergo no one will
+          XXX needs rewrite, Dave doesn’t understand, ergo no one will
           DC suggests contrasting two examples: one in which I am eternally indentured to the
           Illuminati, versus one in which I am just a hired gun.
         -->
@@ -589,10 +588,10 @@
         <p>
           Roles are an indirection that provides additional information about a property or
           relationship. A simple overview is provided in the schema.org blog post
-          <a href="http://blog.schema.org/2014/06/introducing-role.html">Introducing 'Role'</a>.
+          <a href="http://blog.schema.org/2014/06/introducing-role.html">Introducing ’Role’</a>.
         </p>
         <p>
-          Let's look at the example of authorship information. Some properties of the agent who
+          Let’s look at the example of authorship information. Some properties of the agent who
           authored the document (person or organization), such as their name, are considered to be
           true outside the limited context of the document. These properties will be set directly on
           the agent.
@@ -665,7 +664,7 @@
           Actions have a type (e.g. <code>ReadAction</code>, <code>DrinkAction</code>), a status
           (completed, in progress…), an agent being whoever carries it out, and an object which is
           what they are being done to. They can also have start and end times (as well as several
-          other properties which we won't go into here). Scholarly articles typically feature
+          other properties which we won’t go into here). Scholarly articles typically feature
           indications about things that people have done, which is a good fit for modeling with
           actions. A few examples should help clarify the notion.
         </p>
@@ -740,8 +739,8 @@
           purpose).
         </p>
         <p>
-          While the <code>h1</code> in the document's <code>header</code> is sufficient to convey
-          the fact that it is the document's title, some services use extraneous information in
+          While the <code>h1</code> in the document’s <code>header</code> is sufficient to convey
+          the fact that it is the document’s title, some services use extraneous information in
           order to assign an unambiguous title to the document. As such, it needs to have its
           <code>property</code> attribute set to <a>schema:name</a>. Similary, if a subtitle is
           present in the <code>header</code> it needs to be decorated with both a <code>role</code>
@@ -798,7 +797,7 @@
             with <code>typeof</code> <a>sa:AuthorsList</a>. The content of that <code>section</code>
             is an <code>h2</code> title appropriate for it, followed by either a <code>ul</code> or
             <code>ol</code> (depending on whether the authors are considered ordered, which is
-            highly dependent on the discipline's culture).
+            highly dependent on the discipline’s culture).
           </p>
           <p>
             Each <code>li</code> in that list must feature a <code>typeof</code> of
@@ -830,7 +829,7 @@
             </li>
             <li>
               Zero or more <code>a</code> elements with a <code>property</code> of
-              <a>sa:roleAction</a>, one for each comment describing the author's specific
+              <a>sa:roleAction</a>, one for each comment describing the author’s specific
               contribution to the work (e.g. "Authors contributed equally" or "Designed the study").
               Each of those elements needs further to have a <code>resource</code>
               attribute matching the one on the note it is pointing to and an
@@ -850,7 +849,7 @@
             </li>
           </ul>
           <p>
-            Here is an example of a complete kitchen sink authors' section. Note that in most cases
+            Here is an example of a complete kitchen sink authors’ section. Note that in most cases
             the markup will be much simpler — this exercises far more of the features than there
             is information for in a typical case.
           </p>
@@ -1018,7 +1017,7 @@
         </p>
         <p>
           For accessibility purposes, Scholarly HTML recommends that references be formatted in such
-          a manner that they read naturally in the article's natural language, with articulations
+          a manner that they read naturally in the article’s natural language, with articulations
           between the metadata parts, as below:
         </p>
         <figure typeof="schema:SoftwareSourceCode" resource="#citation-example" id="citation-example">
@@ -1228,7 +1227,7 @@
         that we happily stole.
       </p>
       <p>
-        Patrick Johnston's input has been crucial, notably in modeling authoring. We can only
+        Patrick Johnston’s input has been crucial, notably in modeling authoring. We can only
         hope that getting those details exactly right have not caused him to lose too much
         sleep.
       </p>
