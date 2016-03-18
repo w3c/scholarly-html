@@ -61,13 +61,14 @@
     <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
       <h2>Abstract</h2>
       <p>
-        Scholarly HTML is a domain-specific data format built entirely on open standards that
-        enables the interoperable exchange of scholarly articles in a manner that is compatible
+        Scholarly HTML is a domain-specific rich document format built entirely on open standards
+        that enables the interoperable exchange of scholarly articles in a manner that is compatible
         with off-the-shelf browsers. This document describes how Scholarly HTML works and how it is
         encoded.
       </p>
     </section>
     <section id="introduction" role="doc-introduction">
+      <!-- review? -->
       <h2>Introduction</h2>
       <p>
         Scholarly articles are still primarily published as unstructured data in which most of the
@@ -129,6 +130,7 @@
       </p>
     </section>
     <section id="structure">
+      <!-- review? -->
       <h2>Structure</h2>
       <p>
         A Scholarly HTML document is a valid <a role="doc-biblioref">HTML</a> document that follows
@@ -139,6 +141,7 @@
         Overlays</a>. If you would like to write a validation tool, please join us on GitHub.
       </p>
       <section id="Root">
+        <!-- review? -->
         <h3>The root and <code>head</code></h3>
         <p>
           The document must be encoded in UTF-8 and transmitted with a media type of
@@ -150,6 +153,7 @@
         </p>
       </section>
       <section id="article">
+        <!-- review? -->
         <h3>The <code>article</code></h3>
         <p>
           The first child of <code>article</code> must be <code>header</code>. The header should
@@ -178,6 +182,7 @@
         </p>
       </section>
       <section id="hunk">
+        <!-- review? -->
         <h3>Hunk Elements</h3>
         <p>
           Hunk elements are the meaningful blocks from which sections are built. They contain text
@@ -213,6 +218,7 @@
           heading in the <code>aside</code> should be <code>h4</code>.
         </p>
         <section id="figures">
+          <!-- review? -->
           <h4>Figures</h4>
           <p>
             The
@@ -251,6 +257,7 @@
         </section>
       </section>
       <section id="inline">
+        <!-- review? -->
         <h3>Inline Elements</h3>
         <p>
           <a href="https://www.w3.org/TR/html51/semantics.html#text-level-semantics">Inline
@@ -305,6 +312,7 @@
         </figure>
       </section>
       <section id="references">
+        <!-- review? -->
         <h3>References</h3>
         <p>
           The References section requires specific <a href="#citations">semantic overlays</a>
@@ -322,6 +330,7 @@
       </section>
 
       <section id="interactive">
+        <!-- review? -->
         <h3>Interactive Elements</h3>
         <p>
           information about iframes to come
@@ -331,6 +340,7 @@
         </p>
       </section>
       <section id="HTMLRoles">
+        <!-- review? -->
         <h3>HTML Roles</h3>
         <p>
           It is possible to provide information about an HTML element by decorating it with the
@@ -427,6 +437,7 @@
         </p>
       </section>
       <section id="validate">
+        <!-- review? -->
         <h3>Validation</h3>
         <p>
           The only validation requirement for Scholarly HTML at this point is that the HTML is valid.
@@ -454,6 +465,7 @@
       </section>
     </section>
     <section id="semantics">
+      <!-- review? -->
       <h2>Semantics Overlay</h2>
       <p>
         HTML provides an excellent backbone with which to capture the
@@ -498,6 +510,7 @@
         the <a href="#scholarly-article">Scholarly Article Vocabulary</a>.
       </p>
       <section id="person-org">
+        <!-- review? -->
         <h3>Persons &amp; Organizations</h3>
         <p>
           Marking up persons and organizations can make use of any applicable properties in
@@ -572,7 +585,15 @@
           <code>meta</code> (which is acceptable).
         </p>
       </section>
+      <section id="typing-sections">
+        <!-- review? -->
+        <h3>Typing Sections</h3>
+        <p>
+          XXX
+        </p>
+      </section>
       <section id="roles">
+        <!-- review? -->
         <h3>Schema Roles</h3>
         <!--
           XXX needs rewrite, Dave doesn’t understand, ergo no one will
@@ -645,6 +666,7 @@
         </figure>
       </section>
       <section id="actions">
+        <!-- review? -->
         <h3>Actions</h3>
         <p>
           Actions are a global <a role="doc-biblioref">schema.org</a> mechanism to convey facts
@@ -721,6 +743,7 @@
         </figure>
       </section>
       <section id="article-title-semantics">
+        <!-- review? -->
         <h3>Article and Title Semantics</h3>
         <p>
           The <code>article</code> element that roots the content of the Scholarly HTML document
@@ -779,6 +802,7 @@
         </figure>
       </section>
       <section id="contentinfo-semantics">
+        <!-- review? -->
         <h3>The <code>contentinfo</code> Region Semantics</h3>
         <p>
           As described in the <a href="#structure">Structure section</a>, the <code>contentinfo</code>
@@ -791,6 +815,7 @@
           specific <code>typeof</code> attribute.
         </p>
         <section id="authors">
+          <!-- review? -->
           <h4>Authors &amp; Contributors</h4>
           <p>
             If the document has authors or contributors, they are listed in a <code>section</code>
@@ -895,6 +920,7 @@
           </figure>
         </section>
         <section id="affiliations">
+          <!-- review? -->
           <h4>Affiliations</h4>
           <p>
             If the authors and contributors of the documents are affiliated with organizations, they
@@ -956,34 +982,61 @@
           </figure>
         </section>
         <section id="abstract-etc">
+          <!-- review? -->
           <h4>License, Copyright, Keywords, and Abstract</h4>
-          <p>The copyright line of the document can be included in any element, but it must list two properties. <a>schema:copyrightYear</a> has a numeric value, and <a>schema:copyrightHolder</a> has a value of <a>schema:Person</a> or <a>schema:Organization</a>.  </p>
-          <p>A link to the license for the article should be provided. The link should have the property of <a>schema:license</a> and <code>typeof="CreativeWork"</code>. </p>
-          <!-- insert simple license example to CC?-->
-          <p>Keywords should be listed in a <code>section</code> element with an appropriate <code>H2</code>. The list of terms should be a <code>ul</code> with the <code>property</code> of <a>schema:keywords</a> on every <code>li</code>.</p>
-          <p>The abstract should be included in a <code>section</code> element with <code>typeof</code> attribute containing <code>sa:Abstract</code>. The abstract should have the role of <code>doc-abstract</code>.
-
+          <p>
+            The copyright line of the document can be included in any element, but it must list two
+            properties. <a>schema:copyrightYear</a> has a numeric value, and
+            <a>schema:copyrightHolder</a> has a value of <a>schema:Person</a> or
+            <a>schema:Organization</a>.
+          </p>
+          <p>
+            A link to the license for the article should be provided. The link should have the
+            property of <a>schema:license</a> and <code>typeof="CreativeWork"</code>.
+          </p>
+          <!-- XXX insert simple license example to CC?-->
+          <p>
+            Keywords should be listed in a <code>section</code> element with an appropriate
+            <code>h2</code>. The list of terms should be a <code>ul</code> with the
+            <code>property</code> of <a>schema:keywords</a> on every <code>li</code>.
+          </p>
+          <p>
+            The abstract should be included in a <code>section</code> element with
+            <code>typeof</code> attribute containing <code>sa:Abstract</code>. The abstract should
+            have the role of <code>doc-abstract</code>.
           </p>
         </section>
         <section id="meta-notes">
+          <!-- review? -->
           <h4>Notes</h4>
- <p>Notes that add information about the <a href="#authors">Authors and Contributors</a> section should be hunk elements labeled as <code>doc-footnote</code>.
+          <p>
+            Notes that add information about the <a href="#authors">Authors and Contributors</a>
+            section should be hunk elements labeled as <code>doc-footnote</code>.
           </p>
           <!-- these are rdf:HTML? probably not -->
         </section>
       </section>
       <section id="flavored-links">
+        <!-- review? -->
         <h3>Flavored Links</h3>
-        <p>The <a href="https://www.w3.org/TR/html51/semantics.html#linkTypes"><code>rel</code></a> attribute should be applied to apply some spice to your links. The following values of <code>rel</code> should be used on the link that refers to these elements
+        <p>
+          The <a href="https://www.w3.org/TR/html51/semantics.html#linkTypes"><code>rel</code></a>
+          attribute should be applied to apply some spice to your links. The following values of
+          <code>rel</code> should be used on the link that refers to these elements:
         </p>
-          <ul>
+        <ul>
           <li>footnote</li>
-         <li>license</li>
-         <li>stylesheet</li>
-          </ul>
-          <p class="issue">There are many values for rel, such as glossary and bibliography that look like they are useful, but based on the definition, it sounds like they point to the section containing the whole biblio. Not so helpful. rel="citation" or "biblioentry" would be more valuable. </p>
+          <li>license</li>
+          <li>stylesheet</li>
+        </ul>
+        <p class="issue">
+          There are many values for rel, such as glossary and bibliography that look like they are
+          useful, but based on the definition, it sounds like they point to the section containing
+          the whole biblio. Not so helpful. rel="citation" or "biblioentry" would be more valuable.\
+        </p>
       </section>
       <section id="citations">
+        <!-- review? -->
         <h3>Citations &amp; References</h3>
         <p>
           Citations in scholarly articles provide a way to reference the work of others upon which
@@ -1110,69 +1163,92 @@
         </p>
       </section>
       <section id="footnotes">
+        <!-- review? -->
         <h3>Footnotes &amp; Endnotes</h3>
-
-          <p>If the document has notes, they are listed in a <code>section</code>
-            with the role of <code>doc-endnotes</code>. The content of that <code>section</code>
-            is an <code>h2</code> title appropriate for it, followed by either a <code>ul</code> or
-            <code>ol</code>. Each <code>li</code> should be labeled with the role of <code>doc-endnote</code>. </p>
-
-      </section>
-      <section id="typing-sections">
-        <h3>Typing Sections</h3>
         <p>
-
+          If the document has notes, they are listed in a <code>section</code> with the role of
+          <code>doc-endnotes</code>. The content of that <code>section</code> is an <code>h2</code>
+          title appropriate for it, followed by either a <code>ul</code> or <code>ol</code>. Each
+          <code>li</code> should be labeled with the role of <code>doc-endnote</code>.
         </p>
-        <section id="funding">
-          <h3>Funding Information</h3>
-          <p>Funding informations is provided using a complex triples structure which can be summarized as follows:
-            <ul>
-<li>subject: receiver of funding (example: Author)</li>
-<li>predicate: string or sponsor role (example: wasFundedBy)</li>
-<li>object: funding organization (example: Bill &amp; Melinda Gates Foundation)</li></ul>
-<p>This can be enhanced with information such as the award name and Role information. Here is a detailed example:</p>
-<figure typeof="schema:SoftwareSourceCode" resource="#funding-example" id="funding-example" role="doc-example">
-    <pre><code>
-&lt;h2 role="doc-title">Funding&lt;/h2>
-    &lt;ol>
-        &lt;li resource=".scienceai:94fc3550-e08f-11e5-a276-89522f398bc4">
-            &lt;span typeof="schema:Person" resource=".scienceai:94fc3550-e08f-11e5-a276-89522f398bc4">
-                &lt;span>&lt;span property="schema:name">Xiong Ding&lt;/span>
-                    &lt;span property="schema:givenName">Xiong&lt;/span>
-                    &lt;span property="schema:familyName">Ding&lt;/span>&lt;/span>&lt;/span>
-            &lt;span property="schema:name">acknowledge support from&lt;/span>
-            &lt;ul>
-               &lt;li>&lt;span typeof="schema:Organization" resource="http://www.nuc.edu.cn/">&lt;a href="http://www.nuc.edu.cn/" property="schema:name">North University of China&lt;/a>&lt;/span>&lt;/li>&lt;/ul>
-            &lt;span property="schema:roleOffer" typeof="schema:FundingSource">
-                &lt;span property="schema:name">The 11th Graduate Science and Technology Projects&lt;/span> (&lt;span property="schema:alternateName">Natural Science Project&lt;/span>)
-                &lt;span property="schema:serialNumber">20141130&lt;/span>&lt;/span>&lt;/li>
-     &lt;/ol>
-
-               </code></pre>
-
-    <figcaption></figcaption>
-            </figure>
-
-        </section>
-        <section id="disclosures">
-          <h3>Disclosures</h3>
-          <p>Disclosure information is a list of disclosure actions described in a simple triples structure.</p>
-<ul><li>The subject is always one of the contributor roles (example: Author)</li>
-<li>The name of the action (nerd-talk: predicate, human-speak: verb) is a string describing the action (example: "received beer from")</li>
-<li>The recipient, or object, is the direct object of the sentence (example: Guinness) </li></p>
-
-<p>Add example
-          </p>
-        </section>
-        <section id="acknowledgements">
-          <h3>Acknowledgements</h3>
-          <p>
-
-          </p>
-        </section>
+      </section>
+      <section id="funding">
+        <!-- review? -->
+        <h3>Funding Information</h3>
+        <p>
+          Funding informations is provided using a complex triples structure which can be summarized
+          as follows:
+        </p>
+        <ul>
+          <li>subject: receiver of funding (example: Author)</li>
+          <li>predicate: string or sponsor role (example: wasFundedBy)</li>
+          <li>object: funding organization (example: Bill &amp; Melinda Gates Foundation)</li>
+        </ul>
+        <p>
+          This can be enhanced with information such as the award name and Role information. Here is
+          a detailed example:
+        </p>
+        <figure typeof="schema:SoftwareSourceCode" resource="#funding-example" id="funding-example"
+                role="doc-example">
+          <pre><code>
+XXX this example has issues
+&lt;section id="funding" typeof="sa:Funding">
+  &lt;h2 role="doc-title">Funding&lt;/h2>
+  &lt;ol property="schema:sponsor">
+    &lt;li resource="http://funding.example.org/" typeof="sa:SponsorRole">
+      &lt;span typeof="schema:Person" resource="http://example.name/">
+        &lt;span property="schema:name">Xiong Ding&lt;/span>
+      &lt;/span>
+      &lt;span property="schema:name">acknowledges support from&lt;/span>
+      &lt;ul>
+        &lt;li>
+          &lt;span typeof="schema:Organization" resource="http://www.nuc.edu.cn/">
+            &lt;a href="http://www.nuc.edu.cn/" property="schema:name">North University of China&lt;/a>
+          &lt;/span>
+        &lt;/li>
+      &lt;/ul>
+      &lt;span property="schema:roleOffer" typeof="schema:FundingSource">
+        &lt;span property="schema:name">The 11th Graduate Science and Technology Projects&lt;/span>
+        (&lt;span property="schema:alternateName">Natural Science Project&lt;/span>)
+        &lt;span property="schema:serialNumber">20141130&lt;/span>
+      &lt;/span>
+    &lt;/li>
+  &lt;/ol>
+&lt;/section>
+          </code></pre>
+          <figcaption></figcaption>
+        </figure>
+      </section>
+      <section id="disclosures">
+        <!-- review? -->
+        <h3>Disclosures</h3>
+        <p>
+          Disclosure information is a list of disclosure actions described in a simple triples
+          structure.
+        </p>
+        <ul>
+          <li>
+            The subject is always one of the contributor roles (example: Author)
+          </li>
+          <li>
+            The name of the action (nerd-talk: predicate, human-speak: verb) is a string describing
+            the action (example: "received beer from")
+          </li>
+          <li>
+            The recipient, or object, is the direct object of the sentence (example: Guinness)
+          </li>
+        </ul>
+      </section>
+      <section id="acknowledgements">
+        <!-- review? -->
+        <h3>Acknowledgements</h3>
+        <p>
+          XXX
+        </p>
       </section>
     </section>
     <section id="scholarly-article">
+      <!-- review? -->
       <h2>Scholarly Article Vocabulary</h2>
       <p>
         A limited number of classes and properties are currently not available from
@@ -1190,6 +1266,7 @@
       </p>
     </section>
     <section id="hypermedia">
+      <!-- review? -->
       <h2>Hypermedia Controls</h2>
       <!--
         - explain how to model hypermedia integration, cases:
@@ -1199,6 +1276,7 @@
       -->
     </section>
     <section id="processing-model">
+      <!-- review? -->
       <h2>Processing Model</h2>
       <!--
         - basically explain what a processor ignores and what its internal model looks like
@@ -1206,6 +1284,7 @@
       -->
     </section>
     <section id="acks">
+      <!-- review? -->
       <h2>Acknowledgements</h2>
       <p>
         Scholarly HTML would like to thank <a href="http://scholarlyhtml.org/">Scholarly HTML</a>
