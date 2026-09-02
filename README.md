@@ -1,3 +1,5 @@
+> [!CAUTION]
+> The Scholarly HTML Community Group has closed on 2023-12-12.
 
 # Scholarly HTML Community Group repository
 
@@ -10,7 +12,6 @@ Additional links:
 
 * [Contact This Group](mailto:public-scholarlyhtml@w3.org)
 * [Mailing list archive](https://lists.w3.org/Archives/Public/public-scholarlyhtml/)
-* [Join the group](https://www.w3.org/community/scholarlyhtml/join)
 
 A browser friendly reading of the specifications in this repository is possible through
 [github.io](https://w3c.github.io/scholarly-html/).
